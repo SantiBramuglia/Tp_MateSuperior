@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	
-//Mensaje de filas y columnas ingresados
+//Mensaje de filas y columnas ingresados y evento click
 	
 	$("#generar").click(function(){
 		var filas=$("#filas").val();
@@ -13,19 +13,23 @@ $(document).ready(function(){
 	
 	function crear_tabla(filas, columnas){
 		
-		for(var i=1; i<=filas; i++){
+		var table = "";
+		
+		for(var i=0; i<filas; i++){
 			
-			$("#tabla_A_body").append("<tr id='fila_"+i+"'>");
+			table += "<tr id='fila_'"+i+"''>";
 			
-			for(var j=1; j<=columnas; j++){
+			for(var j=0; j<columnas; j++){
 				
-				$("#fila_"+i).append("<td id='columna_"+j+"'>");
-				$("#columna"+j).append("<input type='text' id='col_input "+i+j+"'>"); 
-				$("#fila_"+i).append("</td>");
+				table+="<td id='col_'"+j+"'>";
+				table+="<input type='text' />";
+				table+="</td>";
 			}
 			
-			$("#tabla_A_body").append("</tr>");
+			table+="</tr>";
 		}
+		
+		$("#tabla_A_body").html(table);
 	};
 	
 })
