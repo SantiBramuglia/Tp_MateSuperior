@@ -40,6 +40,8 @@ $(document).ready(function(){
 				alert("Por favor, cargue todos los valores de la matriz");
 				//$(this).focus();
 				return false;
+			}else{
+				return true;
 			}
 				
 		});
@@ -100,8 +102,10 @@ $(document).ready(function(){
 //Me fijo que la matriz esté completamente cargada y sea diagonalmente dominante
 	
 	$("#verificar").click(function(){
-		//con_datos();
+		
+		con_datos();
 		diagonalmente_dominante();
+		
 	})
 			
 	
