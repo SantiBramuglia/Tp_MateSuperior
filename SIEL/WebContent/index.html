@@ -1,16 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<!-- Asociación con JQuery -->
+<script
+  src="http://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+ <script type="text/javascript" src="index.js"></script>
+ 
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>SIEL</title>
 </head>
 <body>
+
+<!-- Ingreso de filas y columnas -->
 <div>
 <label>Cantidad Filas:</label>
-<input type="text"><br>
+<input type="text" id="filas"><br>
 <label>Cantidad Columnas:</label>
-<input type="text"><br><br>
-<button>Generar Matriz</button>
+<input type="text" id="columnas"><br><br>
+<button id="generar">Generar Matriz</button>
+</div>
+
+<!-- Creación de tabla -->
+<div>
+<table id="tabla_A_body">
+		<tr>
+			<td>asdfghjk</td>
+		</tr>
+</table>
 </div>
 </body>
 </html>
