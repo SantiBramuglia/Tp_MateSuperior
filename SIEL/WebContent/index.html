@@ -2,13 +2,16 @@
 <html>
 <head>
 
-<!-- Asociación con JQuery -->
+<!-- Asociaciï¿½n con JQuery -->
 <script
   src="http://code.jquery.com/jquery-3.3.1.js"
   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
   crossorigin="anonymous"></script>
  <script type="text/javascript" src="index.js"></script>
- 
+
+  <script src="../Libs/node_modules/handsontable/dist/handsontable.full.min.js"></script>
+  <link href="../Libs/node_modules/handsontable/dist/handsontable.full.min.css" rel="stylesheet" media="screen">
+
 <meta charset="ISO-8859-1">
 <title>SIEL</title>
 </head>
@@ -23,9 +26,9 @@
 <button id="generar">Generar Matriz</button><br>
 </div>
 
-<!-- Creación de tabla -->
+<!-- Creaciï¿½n de tabla -->
 <div>
-<table id="tabla_A"></table><br>
+  <div id="tabla_A"></div><br>
 <table id="tabla_X"></table><br>
 <table id="tabla_B"></table><br>
 <button id="verificar">Verificar Matriz</button>
