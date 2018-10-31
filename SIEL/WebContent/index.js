@@ -98,7 +98,7 @@ $(document).ready(function () {
 		if (filas == '' || columnas == '') {
 			alert("Por favor, ingrese tanto filas como columnas");
 		} else {
-			crear_grilla(filas, filas, "tabla_A", false);
+			crear_grilla(filas, columnas, "tabla_A", false);
 			//crear_tabla(filas,columnas,"tabla_A",false);
 			//crear_tabla(columnas,1,"tabla_X",true);
 			//crear_tabla(filas,1,"tabla_B",false);
