@@ -1,22 +1,28 @@
 $(document).ready(function () {
 
+	var filas, columnas;
+	
 	$("#verificar").hide();
 	const hot = "";
 
-	function crear_grilla(filas, columnas, idTabla, readOnly) {
+	function crear_grilla(filas, columnas, idTabla, readOnly, numeros) {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
 
 		this.hot = new Handsontable(container, {
 			data: generar_matriz(filas, columnas),
-			validator: 'numeric',
+		//	validator: 'numeric',
 			rowHeaders: false,
 			colHeaders: false,
 			filters: false,
 			dropdownMenu: false,
 			readOnly: readOnly
 		});
+		
+		if(numeros){
+			validator:'numeric'
+		}
 	};
 
 	function generar_matriz(filas, columnas) {
@@ -24,7 +30,7 @@ $(document).ready(function () {
 		var arr = [];
 		for (var i = 0; i < filas; i++) {
 			arr.push([]);
-			arr[i].push(new Array(columnas));
+			arr[i].push(new Array(filas));
 			for (var j = 0; j < columnas; j++) {
 				arr[i][j] = "";
 			}
@@ -64,8 +70,8 @@ $(document).ready(function () {
 
 	function diagonalmente_dominante() {
 
-		var filas = $("#filas").val();
-		var columnas = $("#columnas").val();
+		filas = $("#filas_columnas").val();
+		columnas = $("#filas_columnas").val();
 
 		for (var i = 0; i < filas; i++) {
 
@@ -86,22 +92,22 @@ $(document).ready(function () {
 				return false;
 			}
 		}
+		
+		return true;
 	}
 
 	//Click de Generar Tabla
 
 	$("#generar").click(function () {
-		var filas = $("#filas").val();
-		var columnas = $("#columnas").val();
+		filas = $("#filas_columnas").val();
+		columnas = $("#filas_columnas").val();
+		
 		//alert("Se va a generar una matriz de:\n"+filas+" filas \n"+columnas+" columnas");
 
 		if (filas == '' || columnas == '') {
-			alert("Por favor, ingrese tanto filas como columnas");
+			alert("Por favor, ingrese las filas y columnas");
 		} else {
-			crear_grilla(filas, columnas, "tabla_A", false);
-			//crear_tabla(filas,columnas,"tabla_A",false);
-			//crear_tabla(columnas,1,"tabla_X",true);
-			//crear_tabla(filas,1,"tabla_B",false);
+			crear_grilla(filas, columnas, "tabla_A", false, true);
 			$("#verificar").show();
 		}
 	});
@@ -112,9 +118,19 @@ $(document).ready(function () {
 
 	$("#verificar").click(function () {
 
-		con_datos();
-		con_datos_validos();
-		diagonalmente_dominante();
+		if(con_datos() && con_datos_validos()){
+			
+			if(diagonalmente_dominante()){
+				
+		//		diagonalmente_dominante();
+				
+				crear_grilla(filas, 1, "tabla_X", true, false);
+				crear_grilla(columnas, 1, "tabla_B", false, true);
+				
+			}
+		}
+		
+		
 	})
 })
 
