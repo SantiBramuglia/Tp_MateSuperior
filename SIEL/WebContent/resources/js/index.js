@@ -120,7 +120,15 @@ $(document).ready(function () {
 
 			if(diagonalmente_dominante()){
 				dataX = generar_matriz(matrizA.countRows(), 1);
+				//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
+				for (var i = 0; i < matrizA.countRows(); i++) {
+					dataX[i][0] = "X"+[i+1];
+				}
 				matrizX = crear_grilla(idTablaX, dataX, true, false);
+				
+				//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
+				//dataX[0][0] = "Prueba";
+				//matrizX.render();
 
 				dataB = generar_matriz(matrizA.countRows(), 1);
 				matrizB = crear_grilla(idTablaB, dataB, false, true);
