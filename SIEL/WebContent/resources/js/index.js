@@ -102,7 +102,7 @@ $(document).ready(function () {
 	//Click de Generar Tabla
 
 	$("#generar").click(function () {
-		filas = matrizA.countRows();
+		filas = $("#filas_columnas").val();
 
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
@@ -120,8 +120,8 @@ $(document).ready(function () {
 
 			if(diagonalmente_dominante()){
 
-				matrizX = crear_grilla(filas, 1, idTablaX, true, false);
-				matrizB = crear_grilla(filas, 1, idTablaB, false, true);
+				matrizX = crear_grilla(matrizA.countRows(), 1, idTablaX, true, false);
+				matrizB = crear_grilla(matrizA.countRows(), 1, idTablaB, false, true);
 				
 			}
 		}
