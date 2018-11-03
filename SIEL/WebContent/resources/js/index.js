@@ -73,8 +73,8 @@ $(document).ready(function () {
 	}
 
 	function diagonalmente_dominante() {
-//TODO debería contar las filas de la matriz en lugar de sacarlo de la caja de texto
-		filas = $("#filas_columnas").val();
+
+		filas = matrizA.countRows();
 
 		for (var i = 0; i < filas; i++) {
 
@@ -102,7 +102,7 @@ $(document).ready(function () {
 	//Click de Generar Tabla
 
 	$("#generar").click(function () {
-		filas = $("#filas_columnas").val();
+		filas = matrizA.countRows();
 
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
