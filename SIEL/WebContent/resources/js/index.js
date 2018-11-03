@@ -1,22 +1,21 @@
 $(document).ready(function () {
 
 	var filas,
-		matrizA,
-		matrizX,
-		matrizB,
+		matrizA, matrizX, matrizB,
+		dataA, dataB, dataC, 
 		idTablaA = "tabla_A",
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B";
 	
 	$("#verificar").hide();
 
-	function crear_grilla(filas, columnas, idTabla, readOnly, numeros) {
+	function crear_grilla(idTabla, data, readOnly, numeros) {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
 
 		var matriz = new Handsontable(container, {
-			data: generar_matriz(filas, columnas),
+			data: data,
 		//	validator: 'numeric',
 			rowHeaders: false,
 			colHeaders: false,
@@ -107,7 +106,8 @@ $(document).ready(function () {
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
 		} else {
-			matrizA = crear_grilla(filas, filas, idTablaA, false, true);
+			dataA = generar_matriz(filas, filas);
+			matrizA = crear_grilla(idTablaA, dataA, false, true);
 			$("#verificar").show();
 		}
 	});
@@ -119,9 +119,19 @@ $(document).ready(function () {
 		if(con_datos() && con_datos_validos()){
 
 			if(diagonalmente_dominante()){
+				dataX = generar_matriz(matrizA.countRows(), 1);
+				//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
+				for (var i = 0; i < matrizA.countRows(); i++) {
+					dataX[i][0] = "X"+[i+1];
+				}
+				matrizX = crear_grilla(idTablaX, dataX, true, false);
+				
+				//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
+				//dataX[0][0] = "Prueba";
+				//matrizX.render();
 
-				matrizX = crear_grilla(matrizA.countRows(), 1, idTablaX, true, false);
-				matrizB = crear_grilla(matrizA.countRows(), 1, idTablaB, false, true);
+				dataB = generar_matriz(matrizA.countRows(), 1);
+				matrizB = crear_grilla(idTablaB, dataB, false, true);
 				
 			}
 		}
