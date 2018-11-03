@@ -1,16 +1,21 @@
 $(document).ready(function () {
 
-	var filas, columnas;
+	var filas,
+		matrizA,
+		matrizX,
+		matrizB,
+		idTablaA = "tabla_A",
+		idTablaX = "tabla_X",
+		idTablaB = "tabla_B";
 	
 	$("#verificar").hide();
-	const hot = "";
 
 	function crear_grilla(filas, columnas, idTabla, readOnly, numeros) {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
 
-		this.hot = new Handsontable(container, {
+		var matriz = new Handsontable(container, {
 			data: generar_matriz(filas, columnas),
 		//	validator: 'numeric',
 			rowHeaders: false,
@@ -23,6 +28,7 @@ $(document).ready(function () {
 		if(numeros){
 			validator:'numeric'
 		}
+		return matriz;
 	};
 
 	function generar_matriz(filas, columnas) {
@@ -42,8 +48,7 @@ $(document).ready(function () {
 
 	function con_datos() {
 
-		var matriz = this.hot.getData();
-		var hayVacios = matriz.some(function (array) {
+		var hayVacios = matrizA.getData().some(function (array) {
 			return array.includes("");
 		});
 		if (hayVacios) {
@@ -58,8 +63,7 @@ $(document).ready(function () {
 
 	function con_datos_validos() {
 
-		var matriz = this.hot.getData();
-		var todosSonEnteros = matriz.every(function (array) {
+		var todosSonEnteros = matrizA.getData().every(function (array) {
 			return array.every(esEntero);
 		});
 		if (!todosSonEnteros) {
@@ -69,21 +73,20 @@ $(document).ready(function () {
 	}
 
 	function diagonalmente_dominante() {
-
+//TODO debería contar las filas de la matriz en lugar de sacarlo de la caja de texto
 		filas = $("#filas_columnas").val();
-		columnas = $("#filas_columnas").val();
 
 		for (var i = 0; i < filas; i++) {
 
 			var acum = 0;
 			var diagonal = 0;
 
-			for (var j = 0; j < columnas; j++) {
+			for (var j = 0; j < filas; j++) {
 
 				if (i == j) {
-					diagonal = parseInt(this.hot.getDataAtCell(i, j));
+					diagonal = parseInt(matrizA.getDataAtCell(i, j));
 				} else {
-					acum += parseInt(this.hot.getDataAtCell(i, j));
+					acum += parseInt(matrizA.getDataAtCell(i, j));
 				}
 			}
 
@@ -100,32 +103,25 @@ $(document).ready(function () {
 
 	$("#generar").click(function () {
 		filas = $("#filas_columnas").val();
-		columnas = $("#filas_columnas").val();
-		
-		//alert("Se va a generar una matriz de:\n"+filas+" filas \n"+columnas+" columnas");
 
-		if (filas == '' || columnas == '') {
+		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
 		} else {
-			crear_grilla(filas, columnas, "tabla_A", false, true);
+			matrizA = crear_grilla(filas, filas, idTablaA, false, true);
 			$("#verificar").show();
 		}
 	});
-
-	//Click de Verificar
 
 	//Me fijo que la matriz esté completamente cargada y sea diagonalmente dominante
 
 	$("#verificar").click(function () {
 
 		if(con_datos() && con_datos_validos()){
-			
+
 			if(diagonalmente_dominante()){
-				
-		//		diagonalmente_dominante();
-				
-				crear_grilla(filas, 1, "tabla_X", true, false);
-				crear_grilla(columnas, 1, "tabla_B", false, true);
+
+				matrizX = crear_grilla(filas, 1, idTablaX, true, false);
+				matrizB = crear_grilla(filas, 1, idTablaB, false, true);
 				
 			}
 		}
