@@ -15,3 +15,10 @@ Primary style
   font: Arial;
   color: green;
 }
+
+.subtitulo {
+  text-align: justify;
+  font-size: 4;
+  font: Arial;
+  color: #990000;
+}
