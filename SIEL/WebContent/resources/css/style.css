@@ -3,8 +3,22 @@ Primary style
 -------------------------------- */
 
 .header-logo-utn {
-    position: relative;
-    height: 80px;
-    line-height: 80px;
-    text-align: left;
-  }
+  position: relative;
+  height: 80px;
+  line-height: 80px;
+  text-align: left;
+}
+
+.titulo-ecuaciones-lineales {
+  text-align: center;
+  font-size: 6;
+  font: Arial;
+  color: green;
+}
+
+.subtitulo {
+  text-align: justify;
+  font-size: 4;
+  font: Arial;
+  color: #990000;
+}
