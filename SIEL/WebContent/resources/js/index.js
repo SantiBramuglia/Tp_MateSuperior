@@ -48,7 +48,7 @@ $(document).ready(function () {
 	function con_datos() {
 
 		var hayVacios = matrizA.getData().some(function (array) {
-			return array.includes("");
+			return array.includes("") || array.includes(null);
 		});
 		if (hayVacios) {
 			alert("Por favor, cargue todos los valores de la matriz");
@@ -69,6 +69,10 @@ $(document).ready(function () {
 			alert("Por favor, corrija todos los valores invalidos");
 		};
 		return todosSonEnteros;
+	}
+
+	function esCuadrada(matriz){
+		return matriz.countRows() == matriz.countCols();
 	}
 
 	function diagonalmente_dominante() {
@@ -116,6 +120,10 @@ $(document).ready(function () {
 
 	$("#verificar").click(function () {
 
+		if(!esCuadrada(matrizA)){
+			alert("La matriz ingresada debe ser una matriz cuadrada");
+			return;
+		}
 		if (con_datos() && con_datos_validos()) {
 
 			if (diagonalmente_dominante()) {
