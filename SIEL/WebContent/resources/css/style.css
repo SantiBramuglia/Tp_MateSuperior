@@ -22,3 +22,11 @@ Primary style
   font: Arial;
   color: #990000;
 }
+
+.matriz {
+  float: left
+}
+
+.boton-aislado{
+  clear: both;
+}
