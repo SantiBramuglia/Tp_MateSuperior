@@ -16,11 +16,12 @@ $(document).ready(function () {
 
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
-		} else {
-			dataA = generar_matriz(filas, filas);
-			matrizA = crear_grilla(idTablaA, dataA, false, true);
-			$("#verificar").show();
+			return;
 		}
+
+		dataA = generarData(filas, filas);
+		matrizA = crearMatriz(idTablaA, dataA, false, true);
+		$("#verificar").show();
 	});
 
 	$("#verificar").click(function () {
@@ -42,29 +43,34 @@ $(document).ready(function () {
 			return;
 		}
 
-		dataX = generar_matriz(matrizA.countRows(), 1);
+		dataX = generarData(matrizA.countRows(), 1);
 		//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
 		for (var i = 0; i < matrizA.countRows(); i++) {
 			dataX[i][0] = "X" + [i + 1];
 		}
-		matrizX = crear_grilla(idTablaX, dataX, true, false);
+		matrizX = crearMatriz(idTablaX, dataX, true, false);
 
 		//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
 		//dataX[0][0] = "Prueba";
 		//matrizX.render();
 
-		dataB = generar_matriz(matrizA.countRows(), 1);
-		matrizB = crear_grilla(idTablaB, dataB, false, true);
+		dataB = generarData(matrizA.countRows(), 1);
+		matrizB = crearMatriz(idTablaB, dataB, false, true);
 	})
 
-	function crear_grilla(idTabla, data, readOnly, numeros) {
+	function crearMatriz(idTabla, data, readOnly, esNumerica) {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
 
+		var validador = 'ninguno';
+		if(esNumerica){
+			validador = 'numeric';
+		}
+
 		var matriz = new Handsontable(container, {
 			data: data,
-			//	validator: 'numeric',
+			validator: validador,
 			rowHeaders: false,
 			colHeaders: false,
 			filters: false,
@@ -72,14 +78,10 @@ $(document).ready(function () {
 			readOnly: readOnly
 		});
 
-		if (numeros) {
-			validator: 'numeric'
-		}
 		return matriz;
 	};
 
-	function generar_matriz(filas, columnas) {
-
+	function generarData(filas, columnas) {
 		var arr = [];
 		for (var i = 0; i < filas; i++) {
 			arr.push([]);
