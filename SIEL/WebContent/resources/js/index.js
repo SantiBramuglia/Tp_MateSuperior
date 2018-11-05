@@ -22,6 +22,8 @@ $(document).ready(function () {
 		dataA = generarData(filas, filas);
 		matrizA = crearMatriz(idTablaA, dataA, false, true);
 		$("#verificar").show();
+		$("#tabla_X").hide();
+		$("#tabla_B").hide();
 	});
 
 	$("#verificar").click(function () {
@@ -56,27 +58,35 @@ $(document).ready(function () {
 
 		dataB = generarData(matrizA.countRows(), 1);
 		matrizB = crearMatriz(idTablaB, dataB, false, true);
+
+		ocultar_verificar();
+		$("#tabla_X").show();
+		$("#tabla_B").show();
 	})
 
 	function crearMatriz(idTabla, data, readOnly, esNumerica) {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
-
-		var validador = 'ninguno';
-		if(esNumerica){
-			validador = 'numeric';
+		
+		var config = {
+				data: data,
+				rowHeaders: false,
+				colHeaders: false,
+				filters: false,
+				dropdownMenu: false,
+				readOnly: readOnly
+			};
+		
+		if (esNumerica) {
+			config.validator= 'numeric';
+		}
+		
+		if (idTabla=="tabla_A"){
+			config.beforeChange= mostrar_verificar;
 		}
 
-		var matriz = new Handsontable(container, {
-			data: data,
-			validator: validador,
-			rowHeaders: false,
-			colHeaders: false,
-			filters: false,
-			dropdownMenu: false,
-			readOnly: readOnly
-		});
+		var matriz = new Handsontable(container, config);
 
 		return matriz;
 	};
@@ -133,10 +143,18 @@ $(document).ready(function () {
 		}
 		return true;
 	}
+
+//Función para ocultar el botón Verificar
+	
+	function ocultar_verificar(){
+		$("#verificar").hide();
+		return;
+	}
+
+//Función para mostrar el botón Verificar
+	
+	function mostrar_verificar(){
+		$("#verificar").show();
+		return;
+	}
 })
-
-
-
-
-
-
