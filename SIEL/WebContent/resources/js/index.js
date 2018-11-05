@@ -132,9 +132,9 @@ $(document).ready(function () {
 			var diagonal = 0;
 			for (var j = 0; j < filas; j++) {
 				if (i == j) {
-					diagonal = parseInt(matriz.getDataAtCell(i, j));
+					diagonal = Math.abs(parseInt(matriz.getDataAtCell(i, j)));
 				} else {
-					acum += parseInt(matriz.getDataAtCell(i, j));
+					acum += Math.abs(parseInt(matriz.getDataAtCell(i, j)));
 				}
 			}
 			if (acum > diagonal) {
