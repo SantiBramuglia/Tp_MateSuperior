@@ -22,6 +22,8 @@ $(document).ready(function () {
 		dataA = generarData(filas, filas);
 		matrizA = crearMatriz(idTablaA, dataA, false, true);
 		$("#verificar").show();
+		$("#tabla_X").hide();
+		$("#tabla_B").hide();
 	});
 
 	$("#verificar").click(function () {
@@ -56,6 +58,10 @@ $(document).ready(function () {
 
 		dataB = generarData(matrizA.countRows(), 1);
 		matrizB = crearMatriz(idTablaB, dataB, false, true);
+
+		ocultar_verificar();
+		$("#tabla_X").show();
+		$("#tabla_B").show();
 	})
 
 	function crearMatriz(idTabla, data, readOnly, esNumerica) {
@@ -72,7 +78,7 @@ $(document).ready(function () {
 				readOnly: readOnly
 			};
 		
-		if (numeros) {
+		if (esNumerica) {
 			config.validator= 'numeric';
 		}
 		
@@ -151,49 +157,4 @@ $(document).ready(function () {
 		$("#verificar").show();
 		return;
 	}
-	
-	//Click de Generar Tabla
-
-	$("#generar").click(function () {
-		
-		filas = $("#filas_columnas").val();
-		if (filas == '') {
-			alert("Por favor, ingrese las filas y columnas");
-		} else {
-			dataA = generar_matriz(filas, filas);
-			matrizA = crear_grilla(idTablaA, dataA, false, true);
-			$("#verificar").show();
-			$("#tabla_X").hide();
-			$("#tabla_B").hide();
-		}
-	});
-
-	//Me fijo que la matriz esté completamente cargada y sea diagonalmente dominante
-
-	$("#verificar").click(function () {
-
-		if (con_datos() && con_datos_validos()) {
-
-			if (diagonalmente_dominante()) {
-								
-				dataX = generar_matriz(matrizA.countRows(), 1);
-				//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
-				for (var i = 0; i < matrizA.countRows(); i++) {
-					dataX[i][0] = "X" + [i + 1];
-				}
-				matrizX = crear_grilla(idTablaX, dataX, true, false);
-
-				//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
-				//dataX[0][0] = "Prueba";
-				//matrizX.render();
-
-				dataB = generar_matriz(matrizA.countRows(), 1);
-				matrizB = crear_grilla(idTablaB, dataB, false, true);
-				
-				ocultar_verificar();
-				$("#tabla_X").show();
-				$("#tabla_B").show();
-			}
-		}
-	})
 })

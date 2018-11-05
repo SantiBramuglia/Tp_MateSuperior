@@ -24,7 +24,8 @@ Primary style
 }
 
 .matriz {
-  float: left
+  float: left;
+  margin-right: 10px;
 }
 
 .boton-aislado{
