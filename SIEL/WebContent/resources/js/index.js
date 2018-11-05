@@ -92,15 +92,9 @@ $(document).ready(function () {
 	};
 
 	function generarData(filas, columnas) {
-		var arr = [];
-		for (var i = 0; i < filas; i++) {
-			arr.push([]);
-			arr[i].push(new Array(filas));
-			for (var j = 0; j < columnas; j++) {
-				arr[i][j] = "";
-			}
-		}
-		return arr;
+		var data = []; 
+		data = math.resize(arr, [parseInt(filas), parseInt(columnas)], "");
+		return data;
 	}
 
 	function tieneValoresVacios(matriz) {
@@ -130,11 +124,13 @@ $(document).ready(function () {
 		for (var i = 0; i < filas; i++) {
 			var acum = 0;
 			var diagonal = 0;
+			var valorActual = 0;
 			for (var j = 0; j < filas; j++) {
+				valorActual = math.abs(parseInt(matriz.getDataAtCell(i, j)));
 				if (i == j) {
-					diagonal = Math.abs(parseInt(matriz.getDataAtCell(i, j)));
+					diagonal = valorActual;
 				} else {
-					acum += Math.abs(parseInt(matriz.getDataAtCell(i, j)));
+					acum += valorActual;
 				}
 			}
 			if (acum > diagonal) {
