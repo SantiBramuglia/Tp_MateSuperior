@@ -13,20 +13,26 @@ $(document).ready(function () {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
-
-		var matriz = new Handsontable(container, {
-			data: data,
-			//	validator: 'numeric',
-			rowHeaders: false,
-			colHeaders: false,
-			filters: false,
-			dropdownMenu: false,
-			readOnly: readOnly
-		});
-
+		
+		var config = {
+				data: data,
+				rowHeaders: false,
+				colHeaders: false,
+				filters: false,
+				dropdownMenu: false,
+				readOnly: readOnly
+			};
+		
 		if (numeros) {
-			validator: 'numeric'
+			config.validator= 'numeric';
 		}
+		
+		if (idTabla=="tabla_A"){
+			config.beforeChange= mostrar_verificar;
+		}
+
+		var matriz = new Handsontable(container, config);
+
 		return matriz;
 	};
 
@@ -98,17 +104,33 @@ $(document).ready(function () {
 		return true;
 	}
 
+//Función para ocultar el botón Verificar
+	
+	function ocultar_verificar(){
+		$("#verificar").hide();
+		return;
+	}
+
+//Función para mostrar el botón Verificar
+	
+	function mostrar_verificar(){
+		$("#verificar").show();
+		return;
+	}
+	
 	//Click de Generar Tabla
 
 	$("#generar").click(function () {
+		
 		filas = $("#filas_columnas").val();
-
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
 		} else {
 			dataA = generar_matriz(filas, filas);
 			matrizA = crear_grilla(idTablaA, dataA, false, true);
 			$("#verificar").show();
+			$("#tabla_X").hide();
+			$("#tabla_B").hide();
 		}
 	});
 
@@ -119,6 +141,7 @@ $(document).ready(function () {
 		if (con_datos() && con_datos_validos()) {
 
 			if (diagonalmente_dominante()) {
+								
 				dataX = generar_matriz(matrizA.countRows(), 1);
 				//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
 				for (var i = 0; i < matrizA.countRows(); i++) {
@@ -132,6 +155,10 @@ $(document).ready(function () {
 
 				dataB = generar_matriz(matrizA.countRows(), 1);
 				matrizB = crear_grilla(idTablaB, dataB, false, true);
+				
+				ocultar_verificar();
+				$("#tabla_X").show();
+				$("#tabla_B").show();
 			}
 		}
 	})
