@@ -30,35 +30,48 @@ $(document).ready(function () {
 
 		if(!esCuadrada(matrizA)){
 			alert("La matriz ingresada debe ser una matriz cuadrada");
+			$("#tabla_X").hide();
+			$("#tabla_B").hide();
 			return;
 		}
 		if(tieneValoresVacios(matrizA)){
 			alert("Por favor, cargue todos los valores de la matriz");
+			$("#tabla_X").hide();
+			$("#tabla_B").hide();
 			return;
 		}
 		if(tieneValoresInvalidos(matrizA)){
 			alert("Por favor, corrija todos los valores invalidos");
+			$("#tabla_X").hide();
+			$("#tabla_B").hide();
 			return;
 		}
 		if(!esDiagonalmenteDominante(matrizA)){
 			alert("La matriz ingresada no es diagonalmente dominante");
+			$("#tabla_X").hide();
+			$("#tabla_B").hide();
 			return;
 		}
 
-		dataX = generarData(matrizA.countRows(), 1);
-		//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
-		for (var i = 0; i < matrizA.countRows(); i++) {
-			dataX[i][0] = "X" + [i + 1];
+		var isVisible = $("#tabla_B").is(":visible");
+		
+		if((typeof matrizB == "undefined")||!(isVisible)){
+
+			dataX = generarData(matrizA.countRows(), 1);
+			//Si conozco que valores voy a cargar en la matriz, antes de crear la tabla, los seteo de esta forma
+			for (var i = 0; i < matrizA.countRows(); i++) {
+				dataX[i][0] = "X" + [i + 1];
+			}
+			matrizX = crearMatriz(idTablaX, dataX, true, false);
+		
+			//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
+			//dataX[0][0] = "Prueba";
+			//matrizX.render();
+
+			dataB = generarData(matrizA.countRows(), 1);
+			matrizB = crearMatriz(idTablaB, dataB, false, true);
 		}
-		matrizX = crearMatriz(idTablaX, dataX, true, false);
-
-		//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
-		//dataX[0][0] = "Prueba";
-		//matrizX.render();
-
-		dataB = generarData(matrizA.countRows(), 1);
-		matrizB = crearMatriz(idTablaB, dataB, false, true);
-
+		
 		ocultar_verificar();
 		$("#tabla_X").show();
 		$("#tabla_B").show();
