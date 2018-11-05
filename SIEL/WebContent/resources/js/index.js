@@ -93,7 +93,7 @@ $(document).ready(function () {
 
 	function generarData(filas, columnas) {
 		var data = []; 
-		data = math.resize(arr, [parseInt(filas), parseInt(columnas)], "");
+		data = math.resize(data, [parseInt(filas), parseInt(columnas)], "");
 		return data;
 	}
 
