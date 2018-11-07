@@ -77,50 +77,10 @@ $(document).ready(function () {
 		$("#tabla_B").show();
 	})
 
-	function crearMatriz(idTabla, data, readOnly, esNumerica) {
-
-		var container = document.getElementById(idTabla);
-		container.innerHTML = "";
-
-		var config = {
-				data: data,
-				rowHeaders: false,
-				colHeaders: false,
-				filters: false,
-				dropdownMenu: false,
-				readOnly: readOnly
-			};
-
-		if (esNumerica) {
-			config.validator= 'numeric';
-		}
-
-		if (idTabla=="tabla_A"){
-			config.beforeChange= mostrar_verificar;
-		}
-
-		var matriz = new Handsontable(container, config);
-
-		return matriz;
-	};
-
-	function generarData(filas, columnas) {
-		var data = []; 
-		data = math.resize(data, [parseInt(filas), parseInt(columnas)], "");
-		return data;
-	}
-
 //Función para ocultar el botón Verificar
 
 	function ocultar_verificar(){
 		$("#verificar").hide();
-		return;
-	}
-
-//Función para mostrar el botón Verificar
-
-	function mostrar_verificar(){
-		$("#verificar").show();
 		return;
 	}
 })
