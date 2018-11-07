@@ -70,5 +70,18 @@ $(document).ready(function () {
 		//invocar a la función de ejecución del algoritmo según el que esté seleccionado
 	})
 
+	$("#ejecutar-jacobi-mock").click(function () {
+		console.log('ejecutar-jacobi-mock');
+		console.error('Aun no implementado');
+		//TODO
+		//invocar directamente al algoritmo de jacobi con valores harcodeados
+	})
+
+	$("#ejecutar-gauss-mock").click(function () {
+		console.log('ejecutar-gauss-mock');
+		console.error('Aun no implementado');
+		//TODO
+		//invocar directamente al algoritmo de gauss con valores harcodeados
+	})
 
 })
