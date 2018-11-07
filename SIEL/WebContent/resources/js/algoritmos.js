@@ -1,3 +1,16 @@
+function gauss(iteraciones){
+    var vectorInicial = obtenerVectorInicialMock();
+    var iteracion = 0;
+    for(var i = 0; i < iteraciones; i++){
+        iteracion++;
+        console.log('iteracion '+iteracion);
+        vectorInicial = reemplazoDeGauss(vectorInicial);
+    }
+    console.log('Vector Resultado');
+    console.log(vectorInicial);
+    console.log('***************');
+}
+
 function jacobi(iteraciones){
     var vectorInicial = obtenerVectorInicialMock();
     var iteracion = 0;
@@ -23,12 +36,35 @@ function reemplazoDeJacobi(vectorInicial){
 
     for (var i = 0; i < matrizDespejada.length; i++) {
         var fila = matrizDespejada[i];
-         var acumulado = 0;
+        var acumulado = 0;
         for (var j = 0; j < vectorInicial.length; j++) {
             acumulado += fila[j]*vectorInicial[j];
         }
         acumulado += fila[j];
         vectorResultado[i] = acumulado;
+    }
+    return vectorResultado;
+}
+
+function reemplazoDeGauss(vectorInicial){
+    var matrizDespejada = obtenerMatrizDespejadaMock();
+    var vectorResultado = [];
+    vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
+
+    console.log('***************');
+    console.log('vectorInicial');
+    console.log(vectorInicial);
+    console.log('***************');
+
+    for (var i = 0; i < matrizDespejada.length; i++) {
+        var fila = matrizDespejada[i];
+        var acumulado = 0;
+        for (var j = 0; j < vectorInicial.length; j++) {
+            acumulado += fila[j]*vectorInicial[j];
+        }
+        acumulado += fila[j];
+        vectorInicial[i] = acumulado;
+        vectorResultado[i] = vectorInicial[i];
     }
     return vectorResultado;
 }

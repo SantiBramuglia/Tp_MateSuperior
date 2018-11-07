@@ -81,6 +81,7 @@ $(document).ready(function () {
 	$("#ejecutar-gauss-mock").click(function () {
 		console.log('ejecutar-gauss-mock');
 		console.error('Aun no implementado');
+		gauss(5);
 		//TODO
 		//invocar directamente al algoritmo de gauss con valores harcodeados
 	})
