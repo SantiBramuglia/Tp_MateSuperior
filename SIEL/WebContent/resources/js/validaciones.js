@@ -18,6 +18,18 @@ function esValidaMatrizA(matriz) {
     return true;
 }
 
+function esValidoVectorInicial(vector) {
+    if (tieneValoresVacios(vector)) {
+        alert("Por favor, cargue todos los valores del vector inicial");
+        return false;
+    }
+    if (tieneValoresInvalidos(vector)) {
+        alert("Por favor, corrija todos los valores invalidos");
+        return false;
+    }
+    return true;
+}
+
 function tieneValoresVacios(matriz) {
     return matriz.getData().some(function (array) {
         return array.includes("") || array.includes(null);

@@ -15,7 +15,6 @@ function crearMatriz(idTabla, data, readOnly, esNumerica) {
     if (esNumerica) {
         config.validator= 'numeric';
     }
-
     if (idTabla=="tabla_A"){
         config.beforeChange= $("#verificar").show();
     }
