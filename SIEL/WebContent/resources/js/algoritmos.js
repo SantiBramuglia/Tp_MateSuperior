@@ -1,19 +1,36 @@
-function jacobi(){
-    var matrizDespejada = obtenerMatrizDespejadaMock();
+function jacobi(iteraciones){
     var vectorInicial = obtenerVectorInicialMock();
-    var iteraciones = 10;
+    var iteracion = 0;
+    for(var i = 0; i < iteraciones; i++){
+        iteracion++;
+        console.log('iteracion '+iteracion);
+        vectorInicial = reemplazoDeJacobi(vectorInicial);
+    }
+    console.log('Vector Resultado');
+    console.log(vectorInicial);
+    console.log('***************');
+}
+
+function reemplazoDeJacobi(vectorInicial){
+    var matrizDespejada = obtenerMatrizDespejadaMock();
+    var vectorResultado = [];
+    vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
 
     console.log('***************');
-    console.log('matrizDespejada');
-    console.log(matrizDespejada);
     console.log('vectorInicial');
     console.log(vectorInicial);
-    console.log('iteraciones');
-    console.log(iteraciones);
     console.log('***************');
 
-
-
+    for (var i = 0; i < matrizDespejada.length; i++) {
+        var fila = matrizDespejada[i];
+         var acumulado = 0;
+        for (var j = 0; j < vectorInicial.length; j++) {
+            acumulado += fila[j]*vectorInicial[j];
+        }
+        acumulado += fila[j];
+        vectorResultado[i] = acumulado;
+    }
+    return vectorResultado;
 }
 
 function obtenerMatrizDespejadaMock(){
@@ -27,8 +44,6 @@ function obtenerMatrizDespejadaMock(){
 }
 
 function obtenerVectorInicialMock(){
-    var data = [
-        [3/5,     25/11,    -11/10,   15/8]
-    ];     
+    var data = [0, 0, 0, 0];
     return data;
 }
