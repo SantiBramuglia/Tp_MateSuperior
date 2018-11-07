@@ -1,3 +1,23 @@
+function esValidaMatrizA(matriz) {
+    if (!esCuadrada(matriz)) {
+        alert("La matriz ingresada debe ser una matriz cuadrada");
+        return false;
+    }
+    if (tieneValoresVacios(matriz)) {
+        alert("Por favor, cargue todos los valores de la matriz");
+        return false;
+    }
+    if (tieneValoresInvalidos(matriz)) {
+        alert("Por favor, corrija todos los valores invalidos");
+        return false;
+    }
+    if (!esDiagonalmenteDominante(matriz)) {
+        alert("La matriz ingresada no es diagonalmente dominante");
+        return false;
+    }
+    return true;
+}
+
 function tieneValoresVacios(matriz) {
     return matriz.getData().some(function (array) {
         return array.includes("") || array.includes(null);
