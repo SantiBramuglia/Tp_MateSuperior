@@ -54,7 +54,7 @@ $(document).ready(function () {
 		}
 
 		var isVisible = $("#tabla_B").is(":visible");
-		
+
 		if((typeof matrizB == "undefined")||!(isVisible)){
 
 			dataX = generarData(matrizA.countRows(), 1);
@@ -63,7 +63,7 @@ $(document).ready(function () {
 				dataX[i][0] = "X" + [i + 1];
 			}
 			matrizX = crearMatriz(idTablaX, dataX, true, false);
-		
+
 			//en caso de tener que modificar los datos de una tabla ya renderizada, sobreescribo su data, y vuelvo a renderizar la matriz
 			//dataX[0][0] = "Prueba";
 			//matrizX.render();
@@ -71,7 +71,7 @@ $(document).ready(function () {
 			dataB = generarData(matrizA.countRows(), 1);
 			matrizB = crearMatriz(idTablaB, dataB, false, true);
 		}
-		
+
 		ocultar_verificar();
 		$("#tabla_X").show();
 		$("#tabla_B").show();
@@ -81,7 +81,7 @@ $(document).ready(function () {
 
 		var container = document.getElementById(idTabla);
 		container.innerHTML = "";
-		
+
 		var config = {
 				data: data,
 				rowHeaders: false,
@@ -90,11 +90,11 @@ $(document).ready(function () {
 				dropdownMenu: false,
 				readOnly: readOnly
 			};
-		
+
 		if (esNumerica) {
 			config.validator= 'numeric';
 		}
-		
+
 		if (idTabla=="tabla_A"){
 			config.beforeChange= mostrar_verificar;
 		}
@@ -154,14 +154,14 @@ $(document).ready(function () {
 	}
 
 //Función para ocultar el botón Verificar
-	
+
 	function ocultar_verificar(){
 		$("#verificar").hide();
 		return;
 	}
 
 //Función para mostrar el botón Verificar
-	
+
 	function mostrar_verificar(){
 		$("#verificar").show();
 		return;
