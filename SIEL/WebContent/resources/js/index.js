@@ -73,6 +73,7 @@ $(document).ready(function () {
 	$("#ejecutar-jacobi-mock").click(function () {
 		console.log('ejecutar-jacobi-mock');
 		console.error('Aun no implementado');
+		jacobi();
 		//TODO
 		//invocar directamente al algoritmo de jacobi con valores harcodeados
 	})
