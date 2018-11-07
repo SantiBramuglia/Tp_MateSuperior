@@ -14,6 +14,8 @@
   <script src="resources/js/validaciones.js"></script>
   <script src="resources/js/acciones-matriz.js"></script>
   <script src="vendors/node_modules/mathjs/dist/math.min.js"></script>
+  <script src="resources/js/validaciones.js"></script>
+  <script src="resources/js/acciones-matriz.js"></script>
 
   <link rel="stylesheet" href="resources/css/style.css"> <!-- Estilo principal -->
 
@@ -47,19 +49,26 @@
   <div class="matriz" id="tabla_A"></div>
   <div class="matriz" id="tabla_X"></div>
   <div class="matriz" id="tabla_B"></div>
+  <div class="boton-aislado" id="cuadro_vector_inicial"> Vector inicial:
+    <div id="vector_inicial"></div>
+  </div>
   <div class="boton-aislado">
     <br><button id="verificar">Verificar Matriz</button>
   </div>
+
   <br>
   Metodo a utilizar <br />
   <input type="radio" name="Metodo" value="1">Jacobi <br />
   <input type="radio" name="Metodo" value="2">Gauss-Seidel <br /><br />
   <!--- Valor inicial depende del tamaño de la matriz que elijo -->
-  Valor inicial: X<sub>0</sub>= <input type="tel" size="6" maxlength="5" name="ValorInicialX" align="left">
-  Y<sub>0</sub>= <input type="tel" size="6" maxlength="5" name="ValorInicialY" align="left">
-  Z<sub>0</sub>= <input type="tel" size="6" maxlength="5" name="ValorInicialZ" align="left">
-  Error: 10^- <input type="tel" size="3" maxlength="1" name="Error" align="center">
-  Decimales: <input type="tel" size="3" maxlength="1" name="Decimales" align="right"><br />
+  Cota de Error: 10^- <input type="tel" size="3" maxlength="1" name="Error" align="center">
+  <br>
+  Cantidad de Decimales: <input type="tel" size="3" maxlength="1" name="Decimales" align="right"><br />
+  <div class="boton-aislado">
+    <br><button id="ejecutar">Ejecutar</button>
+  </div>
+
+
   <p>Norma</p>
 
   <select name="Norma">
