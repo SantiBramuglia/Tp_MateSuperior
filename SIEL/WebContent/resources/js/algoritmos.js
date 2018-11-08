@@ -83,3 +83,33 @@ function obtenerVectorInicialMock(){
     var data = [0, 0, 0, 0];
     return data;
 }
+
+//Calculo Norma 2
+function norma2(){
+	const matriz = math.matrix([[2, -1], [3, 5]]);
+	
+	console.log('***************');
+    console.log('matriz');
+    console.log(matriz);
+    console.log('***************');
+	
+	var matrizTraspuesta = math.transpose(matriz);
+	
+	console.log('***************');
+    console.log('matrizTraspuesta');
+    console.log(matrizTraspuesta);
+    console.log('***************');
+	
+	var matrizMult = math.multiply(matrizTraspuesta, matriz);
+	
+	console.log('***************');
+    console.log('matrizMult');
+    console.log(matrizMult);
+    console.log('***************');
+    
+    //TODO
+    //Calcular valores propios de la matriz (eigenvalues)
+    //Aplicar raiz cuadrada a los valores propios
+    //Obtener el numero máximo de todos los valores obtenidos
+	
+}

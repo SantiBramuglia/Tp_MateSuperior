@@ -85,5 +85,13 @@ $(document).ready(function () {
 		//TODO
 		//invocar directamente al algoritmo de gauss con valores harcodeados
 	})
+	
+	$("#ejecutar-norma2-mock").click(function () {
+		console.log('ejecutar-norma2-mock');
+		console.error('Aun no implementado');
+		norma2();
+		//TODO
+		//invocar directamente al algoritmo de jacobi con valores harcodeados
+	})
 
 })
