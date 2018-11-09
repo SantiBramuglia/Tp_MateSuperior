@@ -3,7 +3,7 @@ function jacobi(vectorInicial, matrizDespejada, iteraciones){
     for(var i = 0; i < iteraciones; i++){
         iteracion++;
         //TODO cargar el resultado de cada iteracion en un array
-        console.log('iteracion '+iteracion);
+        console.debug('iteracion '+iteracion);
         vectorInicial = reemplazoDeJacobi(vectorInicial, matrizDespejada);
     }
     return vectorInicial;
@@ -14,7 +14,7 @@ function gauss(vectorInicial, matrizDespejada, iteraciones){
     for(var i = 0; i < iteraciones; i++){
         iteracion++;
         //TODO cargar el resultado de cada iteracion en un array
-        console.log('iteracion '+iteracion);
+        console.debug('iteracion '+iteracion);
         vectorInicial = reemplazoDeGauss(vectorInicial, matrizDespejada);
     }
     return vectorInicial;
@@ -24,10 +24,10 @@ function reemplazoDeJacobi(vectorInicial, matrizDespejada){
     var vectorResultado = [];
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
 
-    console.log('***************');
-    console.log('vectorInicial');
-    console.log(vectorInicial);
-    console.log('***************');
+    console.debug('***************');
+    console.debug('vectorInicial');
+    console.debug(vectorInicial);
+    console.debug('***************');
 
     for (var i = 0; i < matrizDespejada.length; i++) {
         var fila = matrizDespejada[i];
@@ -45,10 +45,10 @@ function reemplazoDeGauss(vectorInicial, matrizDespejada){
     var vectorResultado = [];
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
 
-    console.log('***************');
-    console.log('vectorInicial');
-    console.log(vectorInicial);
-    console.log('***************');
+    console.debug('***************');
+    console.debug('vectorInicial');
+    console.debug(vectorInicial);
+    console.debug('***************');
 
     for (var i = 0; i < matrizDespejada.length; i++) {
         var fila = matrizDespejada[i];

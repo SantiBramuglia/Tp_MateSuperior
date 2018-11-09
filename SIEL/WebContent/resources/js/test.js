@@ -3,7 +3,7 @@ function ejecutarTests(){
     var resultadoJacobi = testJacobi();
     var resultadoGauss = testGauss();
 
-    console.warn('--Inicio de ejecución de tests--');
+    console.info('--Inicio de ejecución de tests--');
     console.log('testObtenerMatrizDespejada: ');
     imprmirSegunEstado(resultadoMatrizDespejada);
     console.log('---');
@@ -12,7 +12,7 @@ function ejecutarTests(){
     console.log('---');
     console.log('testGauss: ');
     imprmirSegunEstado(resultadoGauss);
-    console.warn('--Fin de ejecución de tests--');
+    console.info('--Fin de ejecución de tests--');
 }
 
 function imprmirSegunEstado(valor){
