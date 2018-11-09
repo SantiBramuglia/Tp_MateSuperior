@@ -82,5 +82,62 @@ function obtenerMatrizDespejada(matriz){
         matrizDespejada.push(filaDespejada);
     }
 
+
     return matrizDespejada;
+
+}
+
+//Calculo Norma 2
+function norma2(){
+
+	//Defino matriz A que será evaluada
+	const matriz = [[1, 0, -7], [0, 2, 2], [-1, -1, 0]];
+	
+	console.log('***************');
+    console.log('matriz');
+    console.log(matriz);
+    console.log('***************');
+	
+    //Obtener traspuesta A* de la matriz ingresada
+	var matrizTraspuesta = math.transpose(matriz);
+	
+	console.log('***************');
+    console.log('matrizTraspuesta');
+    console.log(matrizTraspuesta);
+    console.log('***************');
+	
+    //Multiplico A* por A
+	var matrizMult = math.multiply(matrizTraspuesta, matriz);
+	
+	console.log('***************');
+    console.log('matrizMult');
+    console.log(matrizMult);
+    console.log('***************');
+    
+    //Calcular valores propios (eigenvalues) de la matriz resultado 
+    var valoresPropios = numeric.eig(matrizMult).lambda.x;
+	
+	console.log('***************');
+    console.log('valoresPropios');
+    console.log(valoresPropios);
+    console.log('***************');
+    
+    //Aplicar raiz cuadrada a los valores propios
+    var raizCuadradaVP = math.sqrt(valoresPropios);
+    
+    console.log('***************');
+    console.log('raizCuadradaVP');
+    console.log(raizCuadradaVP);
+    console.log('***************');
+    
+    //Obtener el numero máximo de todos los valores obtenidos
+    var maximo = math.max(raizCuadradaVP);
+    
+    console.log('***************');
+    console.log('maximo');
+    console.log(maximo);
+    console.log('***************');  
+    
+	
+
 }

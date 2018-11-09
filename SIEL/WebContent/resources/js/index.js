@@ -103,4 +103,15 @@ $(document).ready(function () {
 	$("#ejecutar-tests").click(function () {
 		ejecutarTests();
 	})
+
+	
+	$("#ejecutar-norma2-mock").click(function () {
+		console.log('ejecutar-norma2-mock');
+		console.error('Aun no implementado');
+		norma2();
+		//TODO
+		//invocar directamente al algoritmo de jacobi con valores harcodeados
+	})
+
+
 })
