@@ -1,12 +1,36 @@
+function ejecutarTests(){
+    var resultadoMatrizDespejada = testObtenerMatrizDespejada();
+    var resultadoJacobi = testJacobi();
+    var resultadoGauss = testGauss();
+
+    console.warn('--Inicio de ejecución de tests--');
+    console.log('testObtenerMatrizDespejada: ');
+    imprmirSegunEstado(resultadoMatrizDespejada);
+    console.log('---');
+    console.log('testJacobi: ');
+    imprmirSegunEstado(resultadoJacobi);
+    console.log('---');
+    console.log('testGauss: ');
+    imprmirSegunEstado(resultadoGauss);
+    console.warn('--Fin de ejecución de tests--');
+}
+
+function imprmirSegunEstado(valor){
+    if(valor){
+        console.log('OK');
+    }
+    else{
+        console.error('ERROR');
+    }
+}
+
 function testObtenerMatrizDespejada(){
     var matrizA = _obtenerMatrizAMock();
     var matrizC = _obtenerMatrizCMock();
     var matrizUnificada = unificarMatriz(matrizA, matrizC);
     var matrizDespejada = obtenerMatrizDespejada(matrizUnificada);
 
-    console.error('---');
-    console.error('testObtenerMatrizDespejada: ');
-    console.error(matrizDespejada.equals(_obtenerMatrizDespejadaMock()));
+    return matrizDespejada.equals(_obtenerMatrizDespejadaMock());
 }
 
 function testJacobi(){
@@ -15,9 +39,7 @@ function testJacobi(){
     var matrizDespejada = _obtenerMatrizDespejadaMock();
     var vectorResultado = jacobi(vectorInicial, matrizDespejada, iteraciones);
 
-    console.error('---');
-    console.error('testJacobi: ');
-    console.error(vectorResultado.equals(_obtenerResultadoJacobiMock()));
+    return vectorResultado.equals(_obtenerResultadoJacobiMock());
 }
 
 function testGauss(){
@@ -26,9 +48,7 @@ function testGauss(){
     var matrizDespejada = _obtenerMatrizDespejadaMock();
     var vectorResultado = gauss(vectorInicial, matrizDespejada, iteraciones);
 
-    console.error('---');
-    console.error('testGauss: ');
-    console.error(vectorResultado.equals(_obtenerResultadoGaussMock()));
+    return vectorResultado.equals(_obtenerResultadoGaussMock());
 }
 
 /********* Valores hardcodeados para la ejecucion de tests **********/

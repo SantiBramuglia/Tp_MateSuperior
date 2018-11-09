@@ -100,27 +100,7 @@ $(document).ready(function () {
 		//invocar a la función de ejecución del algoritmo según el que esté seleccionado
 	})
 
-	$("#ejecutar-jacobi-mock").click(function () {
-		console.log('ejecutar-jacobi-mock');
-		console.error('Aun no implementado');
-		testJacobi();
-		//TODO
-		//invocar directamente al algoritmo de jacobi con valores harcodeados
-	})
-
-	$("#ejecutar-gauss-mock").click(function () {
-		console.log('ejecutar-gauss-mock');
-		console.error('Aun no implementado');
-		testGauss();
-		//TODO
-		//invocar directamente al algoritmo de gauss con valores harcodeados
-	})
-
-	$("#ejecutar-test-matrices").click(function () {
-		console.log('ejecutar-test-matrices');
-		console.error('Aun no implementado');
-		testUnificarMatriz();
-		//TODO
-		//eliminar
+	$("#ejecutar-tests").click(function () {
+		ejecutarTests();
 	})
 })
