@@ -1,31 +1,26 @@
-function gauss(iteraciones){
-    var vectorInicial = obtenerVectorInicialMock();
+function jacobi(vectorInicial, matrizDespejada, iteraciones){
     var iteracion = 0;
     for(var i = 0; i < iteraciones; i++){
         iteracion++;
+        //TODO cargar el resultado de cada iteracion en un array
         console.log('iteracion '+iteracion);
-        vectorInicial = reemplazoDeGauss(vectorInicial);
+        vectorInicial = reemplazoDeJacobi(vectorInicial, matrizDespejada);
     }
-    console.log('Vector Resultado');
-    console.log(vectorInicial);
-    console.log('***************');
+    return vectorInicial;
 }
 
-function jacobi(iteraciones){
-    var vectorInicial = obtenerVectorInicialMock();
+function gauss(vectorInicial, matrizDespejada, iteraciones){
     var iteracion = 0;
     for(var i = 0; i < iteraciones; i++){
         iteracion++;
+        //TODO cargar el resultado de cada iteracion en un array
         console.log('iteracion '+iteracion);
-        vectorInicial = reemplazoDeJacobi(vectorInicial);
+        vectorInicial = reemplazoDeGauss(vectorInicial, matrizDespejada);
     }
-    console.log('Vector Resultado');
-    console.log(vectorInicial);
-    console.log('***************');
+    return vectorInicial;
 }
 
-function reemplazoDeJacobi(vectorInicial){
-    var matrizDespejada = obtenerMatrizDespejadaMock();
+function reemplazoDeJacobi(vectorInicial, matrizDespejada){
     var vectorResultado = [];
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
 
@@ -46,8 +41,7 @@ function reemplazoDeJacobi(vectorInicial){
     return vectorResultado;
 }
 
-function reemplazoDeGauss(vectorInicial){
-    var matrizDespejada = obtenerMatrizDespejadaMock();
+function reemplazoDeGauss(vectorInicial, matrizDespejada){
     var vectorResultado = [];
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
 
@@ -69,14 +63,15 @@ function reemplazoDeGauss(vectorInicial){
     return vectorResultado;
 }
 
-function obtenerMatrizDespejadaMock(){
-    var data = [
-        [0,     0.1,    -0.2,   0,      3/5],
-        [1/11,  0,      1/11,   -3/11,  25/11],
-        [-1/5,  1/10,   0,      1/10,   -11/10],
-        [0,     -3/8,   1/8,    0,      15/8]
-    ];     
-    return data;
+function unificarMatriz(matrizA, matrizC){
+    var matrizUnificada = [];
+    for (var i = 0; i < matrizA.length; i++) {
+        var fila = matrizA[i];
+        math.resize(fila, [fila.length+1], 0);
+        fila[fila.length] = matrizC[i][0];
+        matrizUnificada.push(fila);
+    }
+    return matrizUnificada;
 }
 
 function obtenerMatrizDespejada(matriz){
@@ -99,9 +94,4 @@ function obtenerMatrizDespejada(matriz){
     }
 
     return matrizDespejada;
-}
-
-function obtenerVectorInicialMock(){
-    var data = [0, 0, 0, 0];
-    return data;
 }

@@ -3,12 +3,12 @@ $(document).ready(function () {
 	var filas,
 		matrizA, matrizB, vectorInicial,
 		dataA, dataB, dataVectorInicial
-		idTablaA = "tabla_A",
+	idTablaA = "tabla_A",
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
 		idCuadroVectorInicial = "cuadro_vector_inicial";
-	
+
 	$("#norma1").hide();
 	$("#normaInfinito").hide();
 	$("#norma").hide();
@@ -59,38 +59,36 @@ $(document).ready(function () {
 			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true);
 		}
 
-//		$("#verificar").hide();
+		//		$("#verificar").hide();
 		$("#tabla_X").show();
 		$("#tabla_B").show();
 		$("#cuadro_vector_inicial").show();
 	})
-	
+
 	$("#calcularNorma").click(function () {
-		
-		if ($("#comboNorma").val() == ("Norma 1")){
-			
+
+		if ($("#comboNorma").val() == ("Norma 1")) {
+
 			$("#norma").show();
 			$("#norma1").show();
 			$("#normaInfinito").hide();
 			$("#norma").val(norma1(matrizA));
-			
-		}else if($("#comboNorma").val() == ("Norma infinito")){
-			
+
+		} else if ($("#comboNorma").val() == ("Norma infinito")) {
+
 			$("#norma").show();
 			$("#normaInfinito").show();
 			$("#norma1").hide();
 			$("#norma").val(normaInfinito(matrizA));
-			
-		}else{
-			
+
+		} else {
+
 			$("#norma").val("");
 			$("#norma").hide();
 			$("#norma1").hide();
 			$("#normaInfinito").hide();
 			alert("Seleccione una norma");
 		}
-		
-		
 	})
 
 	$("#ejecutar").click(function () {
@@ -105,7 +103,7 @@ $(document).ready(function () {
 	$("#ejecutar-jacobi-mock").click(function () {
 		console.log('ejecutar-jacobi-mock');
 		console.error('Aun no implementado');
-		jacobi(10);
+		testJacobi();
 		//TODO
 		//invocar directamente al algoritmo de jacobi con valores harcodeados
 	})
@@ -113,9 +111,16 @@ $(document).ready(function () {
 	$("#ejecutar-gauss-mock").click(function () {
 		console.log('ejecutar-gauss-mock');
 		console.error('Aun no implementado');
-		gauss(5);
+		testGauss();
 		//TODO
 		//invocar directamente al algoritmo de gauss con valores harcodeados
 	})
 
+	$("#ejecutar-test-matrices").click(function () {
+		console.log('ejecutar-test-matrices');
+		console.error('Aun no implementado');
+		testUnificarMatriz();
+		//TODO
+		//eliminar
+	})
 })
