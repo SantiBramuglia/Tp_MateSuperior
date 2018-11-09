@@ -79,6 +79,28 @@ function obtenerMatrizDespejadaMock(){
     return data;
 }
 
+function obtenerMatrizDespejada(matriz){
+    var matrizDespejada = [];
+    for (var i = 0; i < matriz.length; i++) {
+        var fila = matriz[i];
+        var valorDiagonal = fila[i];
+        var filaDespejada = new Array(fila.length).fill(0,0);
+
+        for (var j = 0; j < fila.length; j++) {
+            var valor = fila[j];
+            filaDespejada[j] = (-1) * (valor / valorDiagonal);
+        }
+
+        // en la diagonal deben quedar ceros
+        filaDespejada[i] = 0;
+        // el termino independiente mantiene el signo
+        filaDespejada[fila.length - 1] = (-1) * filaDespejada[fila.length - 1];
+        matrizDespejada.push(filaDespejada);
+    }
+
+    return matrizDespejada;
+}
+
 function obtenerVectorInicialMock(){
     var data = [0, 0, 0, 0];
     return data;
