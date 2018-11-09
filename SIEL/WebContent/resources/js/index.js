@@ -8,6 +8,10 @@ $(document).ready(function () {
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
 		idCuadroVectorInicial = "cuadro_vector_inicial";
+	
+	$("#norma1").hide();
+	$("#normaInfinito").hide();
+	$("#norma").hide();
 
 	$("#verificar").hide();
 	$("#cuadro_vector_inicial").hide();
@@ -63,7 +67,30 @@ $(document).ready(function () {
 	
 	$("#calcularNorma").click(function () {
 		
-	//	norma1(matrizA);
+		if ($("#comboNorma").val() == ("Norma 1")){
+			
+			$("#norma").show();
+			$("#norma1").show();
+			$("#normaInfinito").hide();
+			$("#norma").val(norma1(matrizA));
+			
+		}else if($("#comboNorma").val() == ("Norma infinito")){
+			
+			$("#norma").show();
+			$("#normaInfinito").show();
+			$("#norma1").hide();
+			$("#norma").val(normaInfinito(matrizA));
+			
+		}else{
+			
+			$("#norma").val("");
+			$("#norma").hide();
+			$("#norma1").hide();
+			$("#normaInfinito").hide();
+			alert("Seleccione una norma");
+		}
+		
+		
 	})
 
 	$("#ejecutar").click(function () {
