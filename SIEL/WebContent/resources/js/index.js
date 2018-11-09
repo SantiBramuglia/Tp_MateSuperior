@@ -60,6 +60,11 @@ $(document).ready(function () {
 		$("#tabla_B").show();
 		$("#cuadro_vector_inicial").show();
 	})
+	
+	$("#calcularNorma").click(function () {
+		
+	//	norma1(matrizA);
+	})
 
 	$("#ejecutar").click(function () {
 		console.log('ejecutar');
