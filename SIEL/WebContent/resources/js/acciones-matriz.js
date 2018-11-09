@@ -29,3 +29,14 @@ function generarData(filas, columnas) {
     data = math.resize(data, [parseInt(filas), parseInt(columnas)], "");
     return data;
 }
+
+function unificarMatriz(matrizA, matrizC){
+    var matrizUnificada = [];
+    for (var i = 0; i < matrizA.length; i++) {
+        var fila = matrizA[i];
+        math.resize(fila, [fila.length+1], 0);
+        fila[fila.length] = matrizC[i][0];
+        matrizUnificada.push(fila);
+    }
+    return matrizUnificada;
+}

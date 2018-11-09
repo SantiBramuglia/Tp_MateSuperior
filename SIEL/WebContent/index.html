@@ -7,19 +7,18 @@
   <script src="./vendors/node_modules/jquery/dist/jquery.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous"></script>
   <script type="text/javascript" src="resources/js/index.js"></script>
-  <!--import Hadsontable-->
+  <!--import externos-->
   <script src="vendors/node_modules/handsontable/dist/handsontable.full.min.js"></script>
+  <script src="vendors/node_modules/mathjs/dist/math.min.js"></script>
   <link href="vendors/node_modules/handsontable/dist/handsontable.full.min.css" rel="stylesheet" media="screen">
 
-  <script src="resources/js/validaciones.js"></script>
-  <script src="resources/js/acciones-matriz.js"></script>
-  <script src="vendors/node_modules/mathjs/dist/math.min.js"></script>
+  <!--import internos-->
   <script src="resources/js/validaciones.js"></script>
   <script src="resources/js/acciones-matriz.js"></script>
   <script src="resources/js/algoritmos.js"></script>
   <script src="resources/js/normas.js"></script>
-
-  <link rel="stylesheet" href="resources/css/style.css"> <!-- Estilo principal -->
+  <script src="resources/js/test.js"></script>
+  <link href="resources/css/style.css" rel="stylesheet" > <!-- Estilo principal -->
 
   <title>SIEL</title>
 </head>
@@ -70,10 +69,7 @@
     <br><button id="ejecutar">Ejecutar</button>
   </div>
   <div class="boton-aislado">
-    <br><button id="ejecutar-jacobi-mock">Ejecutar Jacobi mockeado</button>
-  </div>
-  <div class="boton-aislado">
-    <br><button id="ejecutar-gauss-mock">Ejecutar Gauss-Seidel mockeado</button>
+    <br><button id="ejecutar-tests">Ejecutar Tests</button>
   </div>
 
   <p>Norma</p>
