@@ -70,7 +70,7 @@ function tieneValoresVacios(matriz) {
 };
 
 function esLetra(key){
-    return /^[A-Za-z]$/.test(e.key);
+    return /^[A-Za-z]$/.test(key);
 }
 
 function esNumero(currentValue) {
