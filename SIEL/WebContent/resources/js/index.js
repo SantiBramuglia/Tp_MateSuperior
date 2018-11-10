@@ -105,10 +105,13 @@ $(document).ready(function () {
 	})
 
 	$("#ejecutar").click(function () {
-		console.log('ejecutar');
-		console.error('Aun no implementado');
+		var cota = $("#cotaError").val();
+		var decimales = $("#cantidadDecimales").val();
+		if(!sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)){
+			return;
+		}
 		//TODO
-		//validar que las 3 matrices, el vector inicial,
+		//validar que 
 		//la cantidad de decimales, y la cota de error tengan datos
 		//invocar a la función de ejecución del algoritmo según el que esté seleccionado
 	})

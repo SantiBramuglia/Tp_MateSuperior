@@ -1,18 +1,51 @@
+function sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales){
+    if(!esValidaMatrizA(matrizA)){
+        return false;
+    }
+    if(!esValidaMatrizB(matrizB)){
+        return false;
+    }
+    if(!esValidoVectorInicial(vectorInicial)){
+        return false;
+    }
+    if(!esEntero(cota)){
+        alert("Por favor, ingrese un valor entero positivo en la Cota de Errores");
+        return false;
+    }
+    if(!esEntero(decimales)){
+        alert("Por favor, ingrese un valor entero positivo en la cantidad de decimales");
+        return false;
+    }
+    return true;
+}
+
 function esValidaMatrizA(matriz) {
     if (!esCuadrada(matriz)) {
-        alert("La matriz ingresada debe ser una matriz cuadrada");
+        alert("La Matriz A ingresada debe ser una matriz cuadrada");
         return false;
     }
     if (tieneValoresVacios(matriz)) {
-        alert("Por favor, cargue todos los valores de la matriz");
+        alert("Por favor, cargue todos los valores de la Matriz A");
         return false;
     }
     if (tieneValoresInvalidos(matriz)) {
-        alert("Por favor, corrija todos los valores invalidos");
+        alert("Por favor, corrija todos los valores invalidos de la Matriz A");
         return false;
     }
     if (!esDiagonalmenteDominante(matriz)) {
-        alert("La matriz ingresada no es diagonalmente dominante");
+        alert("La Matriz A ingresada no es diagonalmente dominante");
+        return false;
+    }
+    return true;
+}
+
+function esValidaMatrizB(matriz){
+    if (tieneValoresVacios(matriz)) {
+        alert("Por favor, cargue todos los valores de la Matriz B");
+        return false;
+    }
+    if (tieneValoresInvalidos(matriz)) {
+        alert("Por favor, corrija todos los valores invalidos de la Matriz B");
         return false;
     }
     return true;
@@ -36,15 +69,19 @@ function tieneValoresVacios(matriz) {
     });
 };
 
-function esEntero(currentValue) {
+function esNumero(currentValue) {
     return !isNaN(currentValue);
 };
 
+function esEntero(numero){
+    return esNumero(numero) && (numero % 1 == 0);
+}
+
 function tieneValoresInvalidos(matriz) {
-    var todosSonEnteros = matriz.getData().every(function (array) {
-        return array.every(esEntero);
+    var todosSonNumeros = matriz.getData().every(function (array) {
+        return array.every(esNumero);
     });
-    return !todosSonEnteros;
+    return !todosSonNumeros;
 }
 
 function esCuadrada(matriz){
