@@ -10,6 +10,7 @@ $(document).ready(function () {
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
 	$("#norma1").hide();
+	$("#norma2").hide();
 	$("#normaInfinito").hide();
 	$("#norma").hide();
 
@@ -71,6 +72,7 @@ $(document).ready(function () {
 
 			$("#norma").show();
 			$("#norma1").show();
+			$("#norma2").hide();
 			$("#normaInfinito").hide();
 			$("#norma").val(norma1(matrizA));
 
@@ -79,13 +81,24 @@ $(document).ready(function () {
 			$("#norma").show();
 			$("#normaInfinito").show();
 			$("#norma1").hide();
+			$("#norma2").hide();
 			$("#norma").val(normaInfinito(matrizA));
 
-		} else {
+		} else if ($("#comboNorma").val() == ("Norma 2")) {
+			
+			$("#norma").show();
+			$("#norma2").show();
+			$("#normaInfinito").hide();
+			$("#norma1").hide();
+			$("#norma").val(norma2(matrizA));
+		}
+		
+		  else {
 
 			$("#norma").val("");
 			$("#norma").hide();
 			$("#norma1").hide();
+			$("#norma2").hide();
 			$("#normaInfinito").hide();
 			alert("Seleccione una norma");
 		}
@@ -104,14 +117,6 @@ $(document).ready(function () {
 		ejecutarTests();
 	})
 
-	
-	$("#ejecutar-norma2-mock").click(function () {
-		console.log('ejecutar-norma2-mock');
-		console.error('Aun no implementado');
-		norma2();
-		//TODO
-		//invocar directamente al algoritmo de jacobi con valores harcodeados
-	})
 
 
 })
