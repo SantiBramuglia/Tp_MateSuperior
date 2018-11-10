@@ -146,7 +146,7 @@ function mostrarEstado1() {
 
     $('.seleccion-metodo').hide();
     $('.ejecutar-algoritmo').hide();
-    $('.ejecutar-norma').hide();
+//    $('.ejecutar-norma').hide();
     $('#generar').hide();
 
     $('#filas_columnas').focus();
