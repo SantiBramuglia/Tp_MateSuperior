@@ -170,6 +170,7 @@ function mostrarEstado2() {
 
 function mostrarEstado3() {
     $("#verificar").hide();
+    $('.ejecutar-norma').show();
     $("#tabla_X").show();
     $("#tabla_B").show();
     $("#cuadro_vector_inicial").show();
