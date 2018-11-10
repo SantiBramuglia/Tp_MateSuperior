@@ -69,6 +69,10 @@ function tieneValoresVacios(matriz) {
     });
 };
 
+function esLetra(key){
+    return /^[A-Za-z]$/.test(e.key);
+}
+
 function esNumero(currentValue) {
     return !isNaN(currentValue);
 };

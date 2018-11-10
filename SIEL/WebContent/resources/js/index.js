@@ -27,8 +27,7 @@ $(document).ready(function () {
 
     $('#filas_columnas').keydown(function (e) {
         const generarVisible = e.target.value.trim() != ''
-        const esUnaLetra = /^[A-Za-z]$/.test(e.key);
-        if(esUnaLetra || e.key==' ') {
+        if(esLetra(e.key) || e.key==' ') {
             e.preventDefault();
             e.stopPropagation();
         }
