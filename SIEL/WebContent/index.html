@@ -35,12 +35,24 @@
 
   <hr />
 
+  <div align="left">
+      <span class="boton-aislado">
+          <button id="restart">Ingresar Un Nuevo Sistema</button>
+      </span>
+      <span class="boton-aislado" style="margin-left: 30px">
+          <button id="ejecutar-tests">Ejecutar Tests</button>
+      </span>
+      <span class="boton-aislado">
+          <button id="ejecutar-norma2-mock">Ejecutar Norma 2 mockeado</button>
+      </span>
+  </div>
+
   <p class="subtitulo">
      Instrucciones para el llenado de los campos y presentacion
   </p>
 
   <!-- Ingreso de filas y columnas -->
-  <div>
+  <div class="generar-matriz-form">
     <label>Cantidad Filas y Columnas:</label>
     <input type="text" id="filas_columnas"><br>
     <br><button id="generar">Generar Matriz</button><br><br>
@@ -57,40 +69,38 @@
     <br><button id="verificar">Verificar Matriz</button>
   </div>
 
-  <br>
-  Metodo a utilizar <br />
-  <input type="radio" name="Metodo" value="1">Jacobi <br />
-  <input type="radio" name="Metodo" value="2">Gauss-Seidel <br /><br />
+  <div class="seleccion-metodo">
+      <div>Seleccione un m&eacute;todo a utilizar</div>
+
+      <input type="radio" name="Metodo" value="1">Jacobi <br />
+      <input type="radio" name="Metodo" value="2">Gauss-Seidel <br /><br />
   <!--- Valor inicial depende del tamaño de la matriz que elijo -->
-  Cota de Error: 10^- <input type="tel" size="3" maxlength="1" name="Error" align="center">
-  <br>
-  Cantidad de Decimales: <input type="tel" size="3" maxlength="1" name="Decimales" align="right"><br />
-  <div class="boton-aislado">
+      <div>
+          <span>Cota de Error: 10^-</span><input type="tel" size="3" maxlength="1" name="Error" align="center">
+      </div>
+      <div>
+          <span>Cantidad de Decimales:</span><input type="tel" size="3" maxlength="1" name="Decimales" align="right"><br />
+      </div>
+  </div>
+  <div class="boton-aislado ejecutar-algoritmo">
     <br><button id="ejecutar">Ejecutar</button>
   </div>
-  <div class="boton-aislado">
-    <br><button id="ejecutar-tests">Ejecutar Tests</button>
-  </div>
-    <div class="boton-aislado">
-    <br><button id="ejecutar-norma2-mock">Ejecutar Norma 2 mockeado</button>
-  </div>
 
-  <p>Norma</p>
+  <div class="ejecutar-norma">
+    <p>Norma</p>
 
-  <select name="Norma" id="comboNorma">
-    <option>Elegir</option>
-    <option>Norma 1 </option>
-    <option>Norma 2</option>
-    <option>Norma infinito</option>
-  </select> <br />
-  <br /><br />
-  <input type="submit" value="Calcular Valores" id="calcularNorma">
-  
-	 <br /><br />
-     <label id="norma1">Norma 1:</label>  
-     <label id="norma2">Norma 2:</label>
-     <label id="normaInfinito">Norma Infinito:</label>
-    <input type="text" id="norma">  
-    
+    <select name="Norma" id="comboNorma">
+        <option>Elegir</option>
+        <option>Norma 1 </option>
+        <option>Norma 2</option>
+        <option>Norma infinito</option>
+    </select>
+    <input type="submit" value="Calcular Valores" id="calcularNorma">
+
+    <label id="norma1">Norma 1:</label>
+    <label id="norma2">Norma 2:</label>
+    <label id="normaInfinito">Norma Infinito:</label>
+    <input type="text" id="norma">
+  </div>
 </body>
 </html>

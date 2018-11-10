@@ -9,13 +9,30 @@ $(document).ready(function () {
 		idVectorInicial = "vector_inicial",
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
-	$("#norma1").hide();
-	$("#norma2").hide();
-	$("#normaInfinito").hide();
-	$("#norma").hide();
+	mostrarEstado1();
 
-	$("#verificar").hide();
-	$("#cuadro_vector_inicial").hide();
+	$('#restart').click(function () {
+        window.location.reload();
+    });
+
+	$('#filas_columnas').keyup(function (e) {
+        const generarVisible = e.target.value.trim() != '';
+        if(e.key == 'Enter' && generarVisible) {
+            $("#generar").click();
+        }
+        else {
+            $("#generar").toggle(generarVisible);
+        }
+    });
+
+    $('#filas_columnas').keydown(function (e) {
+        const generarVisible = e.target.value.trim() != ''
+        const esUnaLetra = /^[A-Za-z]$/.test(e.key);
+        if(esUnaLetra || e.key==' ') {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
 
 	$("#generar").click(function () {
 		filas = $("#filas_columnas").val();
@@ -27,10 +44,8 @@ $(document).ready(function () {
 
 		dataA = generarData(filas, filas);
 		matrizA = crearMatriz(idTablaA, dataA, false, true);
-		$("#verificar").show();
-		$("#tabla_X").hide();
-		$("#tabla_B").hide();
-		$("#cuadro_vector_inicial").hide();
+
+		mostrarEstado2();
 	});
 
 	$("#verificar").click(function () {
@@ -60,10 +75,7 @@ $(document).ready(function () {
 			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true);
 		}
 
-		//		$("#verificar").hide();
-		$("#tabla_X").show();
-		$("#tabla_B").show();
-		$("#cuadro_vector_inicial").show();
+		mostrarEstado3();
 	})
 
 	$("#calcularNorma").click(function () {
@@ -119,4 +131,46 @@ $(document).ready(function () {
 
 
 
-})
+});
+
+function mostrarEstado1() {
+    $("#norma1").hide();
+    $("#norma2").hide();
+    $("#normaInfinito").hide();
+    $("#norma").hide();
+
+    $("#verificar").hide();
+    $("#cuadro_vector_inicial").hide();
+
+    $('.seleccion-metodo').hide();
+    $('.ejecutar-algoritmo').hide();
+    $('.ejecutar-norma').hide();
+    $('#generar').hide();
+
+    $('#filas_columnas').focus();
+    $('.subtitulo').text('Ingrese la cardinalidad de la matriz');
+}
+
+function mostrarEstado2() {
+    $("#tabla_A").hide();
+    $('.generar-matriz-form').hide();
+    $("#tabla_X").hide();
+    $("#tabla_B").hide();
+    $("#cuadro_vector_inicial").hide();
+
+    $("#verificar").fadeIn();
+    $("#tabla_A").fadeIn();
+    $("#tabla_A").focus(); // FIXME: No toma el Focus a la matriz
+
+    $('.subtitulo').text('Complete los valores de los coheficientes');
+}
+
+function mostrarEstado3() {
+    $("#verificar").hide();
+    $("#tabla_X").show();
+    $("#tabla_B").show();
+    $("#cuadro_vector_inicial").show();
+
+    $('.seleccion-metodo, .ejecutar-algoritmo').fadeIn();
+    $('.subtitulo').text('Complete el vector inicial, el vector de resultados y seleccione el metodo a utilizar');
+}
