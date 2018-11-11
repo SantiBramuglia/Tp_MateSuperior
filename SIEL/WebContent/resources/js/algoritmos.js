@@ -63,6 +63,10 @@ function reemplazoDeGauss(vectorInicial, matrizDespejada) {
     return vectorResultado;
 }
 
+function finalizarIteraciones(error, norma){
+    return norma > error;
+}
+
 function obtenerMatrizDespejada(matriz) {
     var matrizDespejada = [];
     for (var i = 0; i < matriz.length; i++) {

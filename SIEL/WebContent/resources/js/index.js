@@ -78,30 +78,30 @@ $(document).ready(function () {
 	})
 
 	$("#calcularNorma").click(function () {
-
-		if ($("#comboNorma").val() == ("Norma 1")) {
+		var normaSeleccionada = $("#comboNorma").val();
+		if (normaSeleccionada == norma1) {
 
 			$("#norma").show();
 			$("#norma1").show();
 			$("#norma2").hide();
 			$("#normaInfinito").hide();
-			$("#norma").val(norma1(matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
 
-		} else if ($("#comboNorma").val() == ("Norma infinito")) {
+		} else if (normaSeleccionada == normaInfinito) {
 
 			$("#norma").show();
 			$("#normaInfinito").show();
 			$("#norma1").hide();
 			$("#norma2").hide();
-			$("#norma").val(normaInfinito(matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
 
-		} else if ($("#comboNorma").val() == ("Norma 2")) {
+		} else if (normaSeleccionada == norma2) {
 
 			$("#norma").show();
 			$("#norma2").show();
 			$("#normaInfinito").hide();
 			$("#norma1").hide();
-			$("#norma").val(norma2(matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
 		}
 
 		else {
