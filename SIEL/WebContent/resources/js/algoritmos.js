@@ -2,8 +2,6 @@ function jacobi(vectorInicial, matrizDespejada, error) {
     var iteracion = 0;
     var vectorResultadoAnterior = vectorInicial;
 
-    error = 0.0009;
-
     do {
         iteracion++;
         //TODO cargar el resultado de cada iteracion en un array
@@ -23,8 +21,6 @@ function jacobi(vectorInicial, matrizDespejada, error) {
 function gauss(vectorInicial, matrizDespejada, error) {
     var iteracion = 0;
     var vectorResultadoAnterior = vectorInicial;
-
-    error = 0.0009;
 
     do {
         iteracion++;

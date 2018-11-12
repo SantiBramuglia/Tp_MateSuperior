@@ -5,17 +5,17 @@ function ejecutarTests(){
 
     console.info('--Inicio de ejecución de tests--');
     console.log('testObtenerMatrizDespejada: ');
-    imprmirSegunEstado(resultadoMatrizDespejada);
+    imprimirSegunEstado(resultadoMatrizDespejada);
     console.log('---');
     console.log('testJacobi: ');
-    imprmirSegunEstado(resultadoJacobi);
+    imprimirSegunEstado(resultadoJacobi);
     console.log('---');
     console.log('testGauss: ');
-    imprmirSegunEstado(resultadoGauss);
+    imprimirSegunEstado(resultadoGauss);
     console.info('--Fin de ejecución de tests--');
 }
 
-function imprmirSegunEstado(valor){
+function imprimirSegunEstado(valor){
     if(valor){
         console.log('OK');
     }
@@ -34,19 +34,19 @@ function testObtenerMatrizDespejada(){
 }
 
 function testJacobi(){
-    var iteraciones = 10;
+    var error = 0.0009;
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
-    var vectorResultado = jacobi(vectorInicial, matrizDespejada, iteraciones);
+    var vectorResultado = jacobi(vectorInicial, matrizDespejada, error);
 
     return vectorResultado.equals(_obtenerResultadoJacobiMock());
 }
 
 function testGauss(){
-    var iteraciones = 5;
+    var error = 0.0009;
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
-    var vectorResultado = gauss(vectorInicial, matrizDespejada, iteraciones);
+    var vectorResultado = gauss(vectorInicial, matrizDespejada, error);
 
     return vectorResultado.equals(_obtenerResultadoGaussMock());
 }
