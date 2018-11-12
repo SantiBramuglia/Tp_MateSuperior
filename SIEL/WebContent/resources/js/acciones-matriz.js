@@ -31,12 +31,5 @@ function generarData(filas, columnas) {
 }
 
 function unificarMatriz(matrizA, matrizC) {
-    var matrizUnificada = [];
-    for (var i = 0; i < matrizA.length; i++) {
-        var fila = matrizA[i];
-        math.resize(fila, [fila.length + 1], 0);
-        fila[fila.length] = matrizC[i][0];
-        matrizUnificada.push(fila);
-    }
-    return matrizUnificada;
+    return math.concat(matrizA, matrizC);
 }
