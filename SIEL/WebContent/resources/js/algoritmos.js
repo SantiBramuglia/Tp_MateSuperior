@@ -3,7 +3,7 @@ const Gauss = "Gauss-Seidel";
 
 function resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDespejada, error) {
     var iteracion = 0;
-    var vectorResultadoAnterior = vectorInicial;
+    var vectorResultadoAnterior = vectorInicial.slice();
     var resultados = [];
     do {
         iteracion++;

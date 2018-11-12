@@ -18,7 +18,7 @@
   <script src="resources/js/algoritmos.js"></script>
   <script src="resources/js/normas.js"></script>
   <script src="resources/js/test.js"></script>
-  <link href="resources/css/style.css" rel="stylesheet" > <!-- Estilo principal -->
+  <link href="resources/css/style.css" rel="stylesheet"> <!-- Estilo principal -->
 
   <title>SIEL</title>
 </head>
@@ -36,16 +36,16 @@
   <hr />
 
   <div align="left">
-      <span class="boton-aislado">
-          <button id="restart">Ingresar Un Nuevo Sistema</button>
-      </span>
-      <span class="boton-aislado" style="margin-left: 30px">
-          <button id="ejecutar-tests">Ejecutar Tests</button>
-      </span>
+    <span class="boton-aislado">
+      <button id="restart">Ingresar Un Nuevo Sistema</button>
+    </span>
+    <span class="boton-aislado" style="margin-left: 30px">
+      <button id="ejecutar-tests">Ejecutar Tests</button>
+    </span>
   </div>
 
   <p class="subtitulo">
-     Instrucciones para el llenado de los campos y presentacion
+    Instrucciones para el llenado de los campos y presentacion
   </p>
 
   <!-- Ingreso de filas y columnas -->
@@ -67,17 +67,20 @@
   </div>
 
   <div class="seleccion-metodo">
-      <div>Seleccione un m&eacute;todo a utilizar</div>
-
-      <input type="radio" name="Metodo" value=Jacobi checked>Jacobi <br />
-      <input type="radio" name="Metodo" value=Gauss-Seidel>Gauss-Seidel <br /><br />
-  <!--- Valor inicial depende del tamaño de la matriz que elijo -->
-      <div>
-          <span>Cota de Error: 10^-</span><input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center">
-      </div>
-      <div>
-          <span>Cantidad de Decimales:</span><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales" align="right"><br />
-      </div>
+    <div>Seleccione un m&eacute;todo a utilizar</div>
+    <select name="Metodo" id="comboMetodo">
+      <option>Elegir</option>
+      <option>Jacobi</option>
+      <option>Gauss-Seidel</option>
+    </select>
+    <!--- Valor inicial depende del tamaño de la matriz que elijo -->
+    <div>
+      <span>Cota de Error: 10^-</span><input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center">
+    </div>
+    <div>
+      <span>Cantidad de Decimales:</span><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales"
+        align="right"><br />
+    </div>
   </div>
   <div class="boton-aislado ejecutar-algoritmo">
     <br><button id="ejecutar">Ejecutar</button>
@@ -88,15 +91,15 @@
     <p>Norma</p>
 
     <select name="Norma" id="comboNorma">
-        <option>Elegir</option>
-        <option>Norma 1 </option>
-        <option>Norma 2</option>
-        <option>Norma infinito</option>
+      <option>Elegir</option>
+      <option>Norma 1 </option>
+      <option>Norma 2</option>
+      <option>Norma infinito</option>
     </select>
     <br><br>
     <input type="submit" value="Calcular Valores" id="calcularNorma">
 
-	<br><br>
+    <br><br>
     <label id="norma1">Norma 1:</label>
     <label id="norma2">Norma 2:</label>
     <label id="normaInfinito">Norma Infinito:</label>
@@ -104,4 +107,5 @@
     <input type="text" id="norma">
   </div>
 </body>
+
 </html>
