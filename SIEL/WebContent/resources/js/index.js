@@ -116,13 +116,17 @@ $(document).ready(function () {
 	})
 
 	$("#ejecutar").click(function () {
+		var metodoSeleccionado = $("#comboMetodo").val();
 		var cota = $("#cotaError").val();
 		var decimales = $("#cantidadDecimales").val();
-		if (!sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
-			return;
+		var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
+		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
+			resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, cota);
 		}
-		//TODO
-		//invocar a la función de ejecución del algoritmo según el que esté seleccionado
+		else {
+			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
+			console.error("ERROR");
+		}
 	})
 
 	$("#ejecutar-tests").click(function () {

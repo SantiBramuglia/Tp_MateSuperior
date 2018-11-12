@@ -1,9 +1,9 @@
 const Jacobi = "Jacobi";
 const Gauss = "Gauss-Seidel";
 
-function resolverSistemaDeEcuaciones(algoritmoSeleccionado, vectorInicial, matrizDespejada, error) {
+function resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDespejada, error) {
     var iteracion = 0;
-    var vectorResultadoAnterior = vectorInicial;
+    var vectorResultadoAnterior = vectorInicial.slice();
     var resultados = [];
     do {
         iteracion++;
@@ -11,9 +11,9 @@ function resolverSistemaDeEcuaciones(algoritmoSeleccionado, vectorInicial, matri
             console.error('ERROR: Demasiadas iteraciones');
             break;
         }
-        if (algoritmoSeleccionado == Jacobi) {
+        if (metodoSeleccionado == Jacobi) {
             vectorResultadoActual = reemplazoDeJacobi(vectorResultadoAnterior, matrizDespejada);
-        } else if (algoritmoSeleccionado == Gauss) {
+        } else if (metodoSeleccionado == Gauss) {
             vectorResultadoActual = reemplazoDeGauss(vectorResultadoAnterior, matrizDespejada);
         }
         norma = calcularNormaInfinito(vectorResultadoAnterior, vectorResultadoActual);
@@ -67,7 +67,8 @@ function reemplazoDeGauss(vectorInicial, matrizDespejada) {
     return vectorResultado;
 }
 
-function obtenerMatrizDespejada(matriz) {
+function obtenerMatrizDespejada(matrizA, matrizB) {
+    var matriz = unificarMatriz(matrizA, matrizB);
     var matrizDespejada = [];
     for (var i = 0; i < matriz.length; i++) {
         var fila = matriz[i];

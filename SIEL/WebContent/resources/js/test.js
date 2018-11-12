@@ -26,9 +26,8 @@ function imprimirSegunEstado(valor){
 
 function testObtenerMatrizDespejada(){
     var matrizA = _obtenerMatrizAMock();
-    var matrizC = _obtenerMatrizCMock();
-    var matrizUnificada = unificarMatriz(matrizA, matrizC);
-    var matrizDespejada = obtenerMatrizDespejada(matrizUnificada);
+    var matrizB = _obtenerMatrizCMock();
+    var matrizDespejada = obtenerMatrizDespejada(matrizA, matrizB);
 
     return matrizDespejada.equals(_obtenerMatrizDespejadaMock());
 }
