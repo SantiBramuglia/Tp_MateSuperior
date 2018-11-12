@@ -9,11 +9,19 @@ function sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decima
         return false;
     }
     if(!esEntero(cota)){
-        alert("Por favor, ingrese un valor entero positivo en la Cota de Errores");
+        alert("Por favor, ingrese un valor entero positivo en la cota de errores");
+        return false;
+    }
+    if (esNulo(cota)) {
+        alert("Por favor, especifique la cota de errores");
         return false;
     }
     if(!esEntero(decimales)){
         alert("Por favor, ingrese un valor entero positivo en la cantidad de decimales");
+        return false;
+    }
+    if (esNulo(decimales)) {
+        alert("Por favor, especifique los decimales");
         return false;
     }
     return true;
@@ -69,12 +77,20 @@ function tieneValoresVacios(matriz) {
     });
 };
 
+function esLetra(key){
+    return /^[A-Za-z]$/.test(key);
+}
+
 function esNumero(currentValue) {
     return !isNaN(currentValue);
 };
 
-function esEntero(numero){
-    return esNumero(numero) && (numero % 1 == 0);
+function esEntero(valor){
+    return esNumero(valor) && (valor % 1 == 0);
+}
+
+function esNulo(numero){
+    return numero == '' || numero == null || numero == undefined
 }
 
 function tieneValoresInvalidos(matriz) {
