@@ -2,8 +2,12 @@ const norma1 = 'Norma 1';
 const norma2 = 'Norma 2';
 const normaInfinito = 'Norma infinito';
 
-function calcularNorma(nombreNorma, vectorInicial, vectorResultado){
+function calcularNormaInfinito(vectorInicial, vectorResultado){
 	var matriz = obtenerMatrizDiferencia(vectorInicial, vectorResultado);
+	return calcularNorma(normaInfinito, matriz);
+}
+
+function calcularNorma(nombreNorma, matriz){
 
 	if(nombreNorma == norma1){
 		return _norma1(matriz);
@@ -44,7 +48,6 @@ function _norma1(matriz){
 	    if (acum > max){
 	    	max = acum;
 	    }
-
 
 	}
 	return max;

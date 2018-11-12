@@ -85,7 +85,7 @@ $(document).ready(function () {
 			$("#norma1").show();
 			$("#norma2").hide();
 			$("#normaInfinito").hide();
-			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA.getData()));
 
 		} else if (normaSeleccionada == normaInfinito) {
 
@@ -93,7 +93,7 @@ $(document).ready(function () {
 			$("#normaInfinito").show();
 			$("#norma1").hide();
 			$("#norma2").hide();
-			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA.getData()));
 
 		} else if (normaSeleccionada == norma2) {
 
@@ -101,7 +101,7 @@ $(document).ready(function () {
 			$("#norma2").show();
 			$("#normaInfinito").hide();
 			$("#norma1").hide();
-			$("#norma").val(calcularNorma(normaSeleccionada, matrizA));
+			$("#norma").val(calcularNorma(normaSeleccionada, matrizA.getData()));
 		}
 
 		else {
