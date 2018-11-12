@@ -2,7 +2,9 @@ const norma1 = 'Norma 1';
 const norma2 = 'Norma 2';
 const normaInfinito = 'Norma infinito';
 
-function calcularNorma(nombreNorma, matriz){
+function calcularNorma(nombreNorma, vectorInicial, vectorResultado){
+	var matriz = obtenerMatrizDiferencia(vectorInicial, vectorResultado);
+
 	if(nombreNorma == norma1){
 		return _norma1(matriz);
 	}
@@ -15,10 +17,10 @@ function calcularNorma(nombreNorma, matriz){
 }
 
 function _norma1(matriz){
-	
-	filas = matriz.countRows();
+
+	filas = matriz.size()[0];
 	var max=0;
-	
+
 	for(var j = 0; j<filas; j++){
 
 		var acum = 0;
@@ -29,7 +31,7 @@ function _norma1(matriz){
 
 	        for (var j1 = 0; j1 < filas; j1++) {
 
-	            valorActual = math.abs(parseInt(matriz.getDataAtCell(i, j)));
+	            valorActual = math.abs(matriz.get([i, j]));
 
 	            if (j1 == j) {
 
@@ -50,7 +52,7 @@ function _norma1(matriz){
 
 function _normaInfinito(matriz){
 
-	filas = matriz.countRows();
+	filas = matriz.size()[0];
 	var max=0;
 
 	for(var j = 0; j<filas; j++){
@@ -63,7 +65,7 @@ function _normaInfinito(matriz){
 
 	        for (var j1 = 0; j1 < filas; j1++) {
 
-	            valorActual = math.abs(parseInt(matriz.getDataAtCell(j, i)));
+	            valorActual = math.abs(matriz.get([j, i]));
 
 	            if (j1 == j) {
 
@@ -84,14 +86,13 @@ function _normaInfinito(matriz){
 
 function _norma2(matriz){
 
-	const matrizAux = matriz.getData();
 	var max = 0;
 
     //Obtener traspuesta A* de la matriz ingresada
-	var matrizTraspuesta = math.transpose(matrizAux);
+	var matrizTraspuesta = math.transpose(matriz);
 
     //Multiplico A* por A
-	var matrizMult = math.multiply(matrizTraspuesta, matrizAux);
+	var matrizMult = math.multiply(matrizTraspuesta, matriz);
 
     //Calcular valores propios (eigenvalues) de la matriz resultado 
     var valoresPropios = numeric.eig(matrizMult).lambda.x;

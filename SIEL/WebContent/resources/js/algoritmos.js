@@ -1,22 +1,27 @@
 function jacobi(vectorInicial, matrizDespejada, error, normaSeleccionada) {
     var iteracion = 0;
-    var vectorResultado = vectorInicial;
+    var vectorResultadoAnterior = vectorInicial;
 
-    error = 0.0002;
-    var norma = 0.0012;
+    normaSeleccionada = norma1;
+    error = 0.0009;
 
     do{
         iteracion++;
-        norma = norma - 0.0001;
         //TODO cargar el resultado de cada iteracion en un array
         console.debug('iteracion ' + iteracion);
-        vectorResultado = reemplazoDeJacobi(vectorResultado, matrizDespejada);
+        vectorResultadoActual = reemplazoDeJacobi(vectorResultadoAnterior, matrizDespejada);
+        norma = calcularNorma(normaSeleccionada, vectorResultadoAnterior, vectorResultadoActual);
         //ver como recalcular la norma
         console.debug('error ' + error);
         console.debug('norma ' + norma);
+        vectorResultadoAnterior = vectorResultadoActual;
+        if(iteracion>1000){
+            console.error('OVERFLOW');
+            return null;
+        }
     }
     while(!finalizarIteraciones(error, norma));
-    return vectorResultado;
+    return vectorResultadoActual;
 }
 
 function gauss(vectorInicial, matrizDespejada, iteraciones) {
@@ -98,3 +103,6 @@ function obtenerMatrizDespejada(matriz) {
     return matrizDespejada;
 }
 
+function obtenerMatrizDiferencia(vectorInicial, vectorResultado){
+    return math.matrix([math.subtract(vectorResultado, vectorInicial)]);
+}
