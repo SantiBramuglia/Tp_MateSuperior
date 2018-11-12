@@ -1,51 +1,43 @@
-function jacobi(vectorInicial, matrizDespejada, error) {
+const Jacobi = "Jacobi";
+const Gauss = "Gauss-Seidel";
+
+function resolverSistemaDeEcuaciones(algoritmoSeleccionado, vectorInicial, matrizDespejada, error) {
     var iteracion = 0;
     var vectorResultadoAnterior = vectorInicial;
-
+    var resultados = [];
     do {
         iteracion++;
-        //TODO cargar el resultado de cada iteracion en un array
-        console.debug('iteracion ' + iteracion);
-        vectorResultadoActual = reemplazoDeJacobi(vectorResultadoAnterior, matrizDespejada);
-        norma = calcularNormaInfinito(vectorResultadoAnterior, vectorResultadoActual);
-        vectorResultadoAnterior = vectorResultadoActual;
         if (iteracion > 500) {
             console.error('ERROR: Demasiadas iteraciones');
             break;
         }
+        if (algoritmoSeleccionado == Jacobi) {
+            vectorResultadoActual = reemplazoDeJacobi(vectorResultadoAnterior, matrizDespejada);
+        } else if (algoritmoSeleccionado == Gauss) {
+            vectorResultadoActual = reemplazoDeGauss(vectorResultadoAnterior, matrizDespejada);
+        }
+        norma = calcularNormaInfinito(vectorResultadoAnterior, vectorResultadoActual);
+
+        var filaNueva = [iteracion, vectorResultadoAnterior, vectorResultadoActual, norma, error];
+        resultados.push(filaNueva);
+
+        vectorResultadoAnterior = vectorResultadoActual;
     }
-    while (!finalizarIteraciones(error, norma));
-    return vectorResultadoActual;
+    while (norma >= error);
+    return resultados;
+}
+
+function jacobi(vectorInicial, matrizDespejada, error) {
+    return resolverSistemaDeEcuaciones(Jacobi, vectorInicial, matrizDespejada, error);
 }
 
 function gauss(vectorInicial, matrizDespejada, error) {
-    var iteracion = 0;
-    var vectorResultadoAnterior = vectorInicial;
-
-    do {
-        iteracion++;
-        //TODO cargar el resultado de cada iteracion en un array
-        vectorResultadoActual = reemplazoDeGauss(vectorResultadoAnterior, matrizDespejada);
-        norma = calcularNormaInfinito(vectorResultadoAnterior, vectorResultadoActual);
-        vectorResultadoAnterior = vectorResultadoActual;
-        if (iteracion > 500) {
-            console.error('ERROR: Demasiadas iteraciones');
-            break;
-        }
-    }
-    while (!finalizarIteraciones(error, norma));
-    return vectorResultadoActual;
+    return resolverSistemaDeEcuaciones(Gauss, vectorInicial, matrizDespejada, error);
 }
 
 function reemplazoDeJacobi(vectorInicial, matrizDespejada) {
     var vectorResultado = [];
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
-
-    console.debug('***************');
-    console.debug('vectorInicial');
-    console.debug(vectorInicial);
-    console.debug('***************');
-
     for (var i = 0; i < matrizDespejada.length; i++) {
         var fila = matrizDespejada[i];
         var acumulado = 0;
@@ -62,12 +54,6 @@ function reemplazoDeGauss(vectorInicial, matrizDespejada) {
     var vectorResultado = [];
     var vectorAux = vectorInicial.slice();
     vectorResultado = math.resize(vectorResultado, [1, vectorInicial.length], 0);
-
-    console.debug('***************');
-    console.debug('vectorInicial');
-    console.debug(vectorAux);
-    console.debug('***************');
-
     for (var i = 0; i < matrizDespejada.length; i++) {
         var fila = matrizDespejada[i];
         var acumulado = 0;
@@ -79,10 +65,6 @@ function reemplazoDeGauss(vectorInicial, matrizDespejada) {
         vectorResultado[i] = vectorAux[i];
     }
     return vectorResultado;
-}
-
-function finalizarIteraciones(error, norma) {
-    return norma < error;
 }
 
 function obtenerMatrizDespejada(matriz) {

@@ -37,18 +37,20 @@ function testJacobi(){
     var error = 0.0009;
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
-    var vectorResultado = jacobi(vectorInicial, matrizDespejada, error);
-
-    return vectorResultado.equals(_obtenerResultadoJacobiMock());
+    var resultado = resolverSistemaDeEcuaciones(Jacobi, vectorInicial, matrizDespejada, error);
+    console.log('Ejecucion Jacobi');
+    console.log(resultado);
+    return resultado[resultado.length-1][2].equals(_obtenerResultadoJacobiMock());
 }
 
 function testGauss(){
     var error = 0.0009;
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
-    var vectorResultado = gauss(vectorInicial, matrizDespejada, error);
-
-    return vectorResultado.equals(_obtenerResultadoGaussMock());
+    var resultado = resolverSistemaDeEcuaciones(Gauss, vectorInicial, matrizDespejada, error);
+    console.log('Ejecucion Gauss');
+    console.log(resultado);
+    return resultado[resultado.length-1][2].equals(_obtenerResultadoGaussMock());
 }
 
 /********* Valores hardcodeados para la ejecucion de tests **********/
