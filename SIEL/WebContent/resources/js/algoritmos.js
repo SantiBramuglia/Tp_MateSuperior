@@ -5,7 +5,7 @@ function resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDe
     var iteracion = 0;
     var vectorResultadoAnterior = vectorInicial.slice();
     var resultados = [];
-    var cotaError = math.pow(10,- error);
+    //var cotaError = math.pow(10,- error);
     
     do {
         iteracion++;
@@ -20,12 +20,12 @@ function resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDe
         }
         norma = calcularNormaInfinito(vectorResultadoAnterior, vectorResultadoActual);
 
-        var filaNueva = [iteracion, vectorResultadoAnterior, vectorResultadoActual, norma, cotaError];
+        var filaNueva = [iteracion, vectorResultadoAnterior, vectorResultadoActual, norma, error];
         resultados.push(filaNueva);
 
         vectorResultadoAnterior = vectorResultadoActual;
     }
-    while (norma >= cotaError);
+    while (norma >= error);
     console.log(resultados);
     return resultados;
 }

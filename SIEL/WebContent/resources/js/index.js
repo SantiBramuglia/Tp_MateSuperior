@@ -121,7 +121,7 @@ $(document).ready(function () {
 		var decimales = $("#cantidadDecimales").val();
 		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
 			var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
-			resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, cota);
+			resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, math.pow(10,- cota));
 		}
 		else {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
