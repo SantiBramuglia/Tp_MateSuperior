@@ -119,12 +119,10 @@ $(document).ready(function () {
 		var metodoSeleccionado = $("#Metodo").val();
 		var cota = $("#cotaError").val();
 		var decimales = $("#cantidadDecimales").val();
+		var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
 		
 		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
-			if (metodoSeleccionado = 1)
-				jacobi(matrizA.getData(),obtenerMatrizDespejada(matrizA.getData()),cota );
-			else if (metodoSeleccionado = 2)
-				gauss(matrizA.getData(),obtenerMatrizDespejada(matrizA.getData()),cota );
+			resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDespejada, cota);
 		}
 		else {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
