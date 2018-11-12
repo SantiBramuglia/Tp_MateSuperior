@@ -116,13 +116,20 @@ $(document).ready(function () {
 	})
 
 	$("#ejecutar").click(function () {
+		var metodoSeleccionado = $("#Metodo").val();
 		var cota = $("#cotaError").val();
 		var decimales = $("#cantidadDecimales").val();
-		if (!sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
-			return;
+		
+		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
+			if (metodoSeleccionado = 1)
+				jacobi(matrizA.getData(),obtenerMatrizDespejada(matrizA.getData()),cota );
+			else if (metodoSeleccionado = 2)
+				gauss(matrizA.getData(),obtenerMatrizDespejada(matrizA.getData()),cota );
 		}
-		//TODO
-		//invocar a la función de ejecución del algoritmo según el que esté seleccionado
+		else {
+			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
+			console.error("ERROR");
+		}
 	})
 
 	$("#ejecutar-tests").click(function () {
