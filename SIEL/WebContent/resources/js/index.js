@@ -119,8 +119,8 @@ $(document).ready(function () {
 		var metodoSeleccionado = $("#comboMetodo").val();
 		var cota = $("#cotaError").val();
 		var decimales = $("#cantidadDecimales").val();
-		var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
 		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
+			var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
 			resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, cota);
 		}
 		else {
