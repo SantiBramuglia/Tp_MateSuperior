@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" href="resources/images/favicon.ico" />
   <!-- Asociación con JQuery -->
   <script src="vendors/node_modules/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="resources/js/index.js"></script>
@@ -25,16 +26,24 @@
 
 
 <body>
-  <div class="header-logo-utn">
-    <img src="resources/images/Logo-UTN.png" height="80">
+  <div>
+    <div class="header-logo-utn">
+      <img src="resources/images/Logo-UTN.png" height="80">
+    </div>
+    <div>
+      <h1 class="titulo-ecuaciones-lineales">
+        SIEL - Sistemas de Ecuaciones Lineales
+      </h1>
+    </div>
+    <div class="header-logo-siel">
+      <img src="resources/images/Logo-SIEL.png" height="80">
+    </div>
   </div>
 
-  <h2 class="titulo-ecuaciones-lineales">
-    Ecuaciones Lineales
-  </h2>
 
-  <hr />
-
+  <div class="boton-aislado">
+    <hr />
+  </div>
   <div align="left">
     <span class="boton-aislado">
       <button id="restart">Ingresar Un Nuevo Sistema</button>
@@ -50,60 +59,74 @@
 
   <!-- Ingreso de filas y columnas -->
   <div class="generar-matriz-form">
-    <label>Cantidad Filas y Columnas:</label>
-    <input type="text" id="filas_columnas"><br>
-    <br><button id="generar">Generar Matriz</button><br><br>
+    <label>Ingrese el rango de la Matriz A:</label>
+    <input type="text" id="filas_columnas" class="boton-generar-matriz">
+    <button id="generar">Generar Matriz</button><br><br>
   </div>
 
 
-  <div class="matriz" id="tabla_A"></div>
-  <div class="matriz" id="tabla_X"></div>
-  <div class="matriz" id="tabla_B"></div>
+  <div id="cuadro_tabla_A" class="matriz">
+    <div id="tabla_A"></div>
+    <p class="texto-matriz">Matriz A</p>
+  </div>
+  <div id="middot" class="matriz">
+    <p>&middot;</p>
+  </div>
+  <div id="cuadro_tabla_X" class="matriz">
+    <div id="tabla_X"></div>
+    <p class="texto-matriz">Matriz X</p>
+  </div>
+  <div id="equals" class="matriz">
+    <p>=</p>
+  </div>
+  <div id="cuadro_tabla_B" class="matriz">
+    <div id="tabla_B"></div>
+    <p class="texto-matriz">Matriz B</p>
+  </div>
   <div class="boton-aislado" id="cuadro_vector_inicial"> Vector inicial:
-    <div id="vector_inicial"></div>
+    <div id="header_vector_inicial"></div>
+    <div class="vector-inicial" id="vector_inicial"></div>
   </div>
-  <div class="boton-aislado">
-    <br><button id="verificar">Verificar Matriz</button>
-  </div>
+
 
   <div class="seleccion-metodo">
-    <div>Seleccione un m&eacute;todo a utilizar</div>
-    <select name="Metodo" id="comboMetodo">
-      <option>Jacobi</option>
-      <option>Gauss-Seidel</option>
-    </select>
+    <div class="columna-seleccion-metodo">
+      <div>Seleccione un m&eacute;todo a utilizar</div>
+      <select name="Metodo" id="comboMetodo">
+        <option>Jacobi</option>
+        <option>Gauss-Seidel</option>
+      </select>
+    </div>
     <!--- Valor inicial depende del tamaño de la matriz que elijo -->
-    <div>
-      <span>Cota de Error: 10^-</span><input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center">
+    <div class="columna-seleccion-metodo">
+      <div>
+        <span>Cota de Error: </span>
+        <div>10^-<input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center"></div>
+      </div>
+    </div>
+    <div class="columna-seleccion-metodo">
+      <div>
+        <span>Cantidad de Decimales:</span>
+        <div><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales" align="right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="boton-aislado">
+    <div class="boton-verificar">
+      <button id="verificar">Verificar Matriz</button>
     </div>
     <div>
-      <span>Cantidad de Decimales:</span><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales"
-        align="right"><br />
+      <button id="ejecutarNormas">Calcular Normas</button>
     </div>
+  </div>
+  <div class="boton-aislado">
+    <div id="tabla_normas"></div>
   </div>
   <div class="boton-aislado ejecutar-algoritmo">
     <br><button id="ejecutar">Ejecutar</button>
   </div>
-
-  <br>
-  <div class="ejecutar-norma">
-    <p>Norma</p>
-
-    <select name="Norma" id="comboNorma">
-      <option>Elegir</option>
-      <option>Norma 1 </option>
-      <option>Norma 2</option>
-      <option>Norma infinito</option>
-    </select>
-    <br><br>
-    <input type="submit" value="Calcular Valores" id="calcularNorma">
-
-    <br><br>
-    <label id="norma1">Norma 1:</label>
-    <label id="norma2">Norma 2:</label>
-    <label id="normaInfinito">Norma Infinito:</label>
-    <br>
-    <input type="text" id="norma">
+  <div class="boton-aislado">
+    <div id="tabla_resultados"></div>
   </div>
 </body>
 

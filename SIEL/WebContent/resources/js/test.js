@@ -37,8 +37,8 @@ function testJacobi(){
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
     var resultado = resolverSistemaDeEcuaciones(Jacobi, vectorInicial, matrizDespejada, error);
-    console.log('Ejecucion Jacobi');
-    console.log(resultado);
+    console.debug('Ejecucion Jacobi');
+    console.debug(resultado);
     return resultado[resultado.length-1][2].equals(_obtenerResultadoJacobiMock());
 }
 
@@ -47,8 +47,8 @@ function testGauss(){
     var vectorInicial = _obtenerVectorInicialMock();
     var matrizDespejada = _obtenerMatrizDespejadaMock();
     var resultado = resolverSistemaDeEcuaciones(Gauss, vectorInicial, matrizDespejada, error);
-    console.log('Ejecucion Gauss');
-    console.log(resultado);
+    console.debug('Ejecucion Gauss');
+    console.debug(resultado);
     return resultado[resultado.length-1][2].equals(_obtenerResultadoGaussMock());
 }
 

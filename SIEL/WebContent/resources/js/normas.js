@@ -8,7 +8,6 @@ function calcularNormaInfinito(vectorInicial, vectorResultado){
 }
 
 function calcularNorma(nombreNorma, matriz){
-
 	if(nombreNorma == norma1){
 		return _norma1(matriz);
 	}
@@ -21,7 +20,9 @@ function calcularNorma(nombreNorma, matriz){
 }
 
 function _norma1(matriz){
-
+	if(matriz instanceof Array){
+		matriz = math.matrix(matriz);
+	}
 	filas = matriz.size()[0];
 	var max=0;
 
@@ -54,7 +55,9 @@ function _norma1(matriz){
 }
 
 function _normaInfinito(matriz){
-
+	if(matriz instanceof Array){
+		matriz = math.matrix(matriz);
+	}
 	filas = matriz.size()[0];
 	var max=0;
 
