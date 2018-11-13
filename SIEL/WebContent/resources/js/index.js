@@ -7,6 +7,7 @@ $(document).ready(function () {
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
+		tablaNormas = "tabla_normas",
 		idEncabezadoVectorInicial = "header_vector_inicial"
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
@@ -83,6 +84,20 @@ $(document).ready(function () {
 		mostrarEstado3();
 	})
 
+	$("#ejecutarNormas").click(function () {
+		if (!esValidaMatrizA(matrizA)) {
+			return;
+		}
+		dataNormas = generarData(3, 2);
+		dataNormas[0][0] = norma1;
+		dataNormas[0][1] = calcularNorma(norma1, matrizA.getData());
+		dataNormas[1][0] = norma2;
+		dataNormas[1][1] = calcularNorma(norma2, matrizA.getData());
+		dataNormas[2][0] = normaInfinito;
+		dataNormas[2][1] = calcularNorma(normaInfinito, matrizA.getData());
+		HTNormas = crearMatriz(tablaNormas, dataNormas, true, false);
+	})
+
 	$("#calcularNorma").click(function () {
 		var normaSeleccionada = $("#comboNorma").val();
 		if (normaSeleccionada == norma1) {
@@ -149,6 +164,8 @@ function mostrarEstado1() {
 	$("#norma").hide();
 
 	$("#verificar").hide();
+	$("#ejecutarNormas").hide();
+
 	$("#cuadro_vector_inicial").hide();
 
 	$('.seleccion-metodo').hide();
@@ -181,6 +198,7 @@ function mostrarEstado2() {
 	$("#cuadro_vector_inicial").hide();
 
 	$("#verificar").fadeIn();
+	$("#ejecutarNormas").fadeIn();
 	$("#tabla_A").fadeIn();
 	$("#tabla_A").focus(); // FIXME: No toma el Focus a la matriz
 

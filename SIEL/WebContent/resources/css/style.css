@@ -53,6 +53,11 @@ Primary style
   margin-top: 0px;
 }
 
+.boton-verificar{
+  float: left;
+  margin-right: 10px;
+}
+
 .boton-aislado{
   clear: both;
   padding-top: 15px;
