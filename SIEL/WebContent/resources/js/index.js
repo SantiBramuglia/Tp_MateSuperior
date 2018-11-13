@@ -3,11 +3,12 @@ $(document).ready(function () {
 	var filas,
 		matrizA, matrizB, vectorInicial,
 		dataA, dataB, dataVectorInicial
-	idTablaA = "tabla_A",
+		idTablaA = "tabla_A",
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
 		tablaNormas = "tabla_normas",
+		tablaResultados = "tabla_resultados",
 		idEncabezadoVectorInicial = "header_vector_inicial"
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
@@ -149,7 +150,7 @@ $(document).ready(function () {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
 			console.error("ERROR");
 		}
-		console.log(resultados);
+		crearMatriz(tablaResultados, resultados, true, false);
 	})
 
 	$("#ejecutar-tests").click(function () {
