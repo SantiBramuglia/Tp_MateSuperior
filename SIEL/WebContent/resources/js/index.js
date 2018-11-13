@@ -50,8 +50,10 @@ $(document).ready(function () {
 	$("#verificar").click(function () {
 
 		if (!esValidaMatrizA(matrizA)) {
+			$("#middot").hide();
 			$("#cuadro_tabla_X").hide();
 			$("#tabla_X").hide();
+			$("#equals").hide();
 			$("#cuadro_tabla_B").hide();
 			$("#tabla_B").hide();
 			$("#cuadro_vector_inicial").hide();
@@ -154,8 +156,10 @@ function mostrarEstado1() {
 	$("#tabla_A").hide();
 	$("#cuadro_tabla_A").hide();
 	$("#tabla_B").hide();
+	$("#equals").hide();
 	$("#cuadro_tabla_B").hide();
 	$("#tabla_X").hide();
+	$("#middot").hide();
 	$("#cuadro_tabla_X").hide();
 
 	$('#filas_columnas').focus();
@@ -166,8 +170,10 @@ function mostrarEstado2() {
 	$("#cuadro_tabla_A").show();
 	$("#tabla_A").show();
 	$('.generar-matriz-form').hide();
+	$("#middot").hide();
 	$("#cuadro_tabla_X").hide();
 	$("#tabla_X").hide();
+	$("#equals").hide();
 	$("#cuadro_tabla_B").hide();
 	$("#tabla_B").hide();
 	$("#cuadro_vector_inicial").hide();
@@ -182,8 +188,10 @@ function mostrarEstado2() {
 function mostrarEstado3() {
 	$("#verificar").hide();
 	$('.ejecutar-norma').show();
+	$("#middot").show();
 	$("#cuadro_tabla_X").show();
 	$("#tabla_X").show();
+	$("#equals").show();
 	$("#cuadro_tabla_B").show();
 	$("#tabla_B").show();
 	$("#cuadro_vector_inicial").show();
