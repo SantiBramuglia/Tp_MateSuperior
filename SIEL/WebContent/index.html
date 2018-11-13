@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" href="resources/images/favicon.ico" />
   <!-- Asociación con JQuery -->
   <script src="vendors/node_modules/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="resources/js/index.js"></script>
@@ -25,16 +26,24 @@
 
 
 <body>
-  <div class="header-logo-utn">
-    <img src="resources/images/Logo-UTN.png" height="80">
+  <div>
+    <div class="header-logo-utn">
+      <img src="resources/images/Logo-UTN.png" height="80">
+    </div>
+    <div>
+      <h1 class="titulo-ecuaciones-lineales">
+        SIEL - Sistemas de Ecuaciones Lineales
+      </h1>
+    </div>
+    <div class="header-logo-siel">
+        <img src="resources/images/Logo-SIEL.png" height="80">
+      </div>
   </div>
 
-  <h2 class="titulo-ecuaciones-lineales">
-    Ecuaciones Lineales
-  </h2>
 
-  <hr />
-
+  <div class="boton-aislado">
+    <hr />
+  </div>
   <div align="left">
     <span class="boton-aislado">
       <button id="restart">Ingresar Un Nuevo Sistema</button>
@@ -50,9 +59,9 @@
 
   <!-- Ingreso de filas y columnas -->
   <div class="generar-matriz-form">
-    <label>Cantidad Filas y Columnas:</label>
-    <input type="text" id="filas_columnas"><br>
-    <br><button id="generar">Generar Matriz</button><br><br>
+    <label>Ingrese el rango de la Matriz A:</label>
+    <input type="text" id="filas_columnas" class="boton-generar-matriz">
+    <button id="generar">Generar Matriz</button><br><br>
   </div>
 
 

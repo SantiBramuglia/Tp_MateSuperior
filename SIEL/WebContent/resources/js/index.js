@@ -165,7 +165,7 @@ function mostrarEstado2() {
 	$("#tabla_A").fadeIn();
 	$("#tabla_A").focus(); // FIXME: No toma el Focus a la matriz
 
-	$('.subtitulo').text('Complete los valores de los coheficientes');
+	$('.subtitulo').text('Complete los valores de los coeficientes');
 }
 
 function mostrarEstado3() {
