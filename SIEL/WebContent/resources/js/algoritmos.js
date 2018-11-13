@@ -26,7 +26,6 @@ function resolverSistemaDeEcuaciones(metodoSeleccionado, vectorInicial, matrizDe
         vectorResultadoAnterior = vectorResultadoActual;
     }
     while (norma >= error);
-    console.log(resultados);
     return resultados;
 }
 
