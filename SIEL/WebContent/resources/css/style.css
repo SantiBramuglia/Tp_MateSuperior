@@ -5,6 +5,13 @@ Primary style
   width: 40px;
 }
 
+.texto-matriz{
+  clear: both;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: small;
+}
+
 .header-logo-utn {
   position: relative;
   height: 80px;

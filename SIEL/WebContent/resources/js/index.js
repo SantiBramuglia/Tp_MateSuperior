@@ -50,7 +50,9 @@ $(document).ready(function () {
 	$("#verificar").click(function () {
 
 		if (!esValidaMatrizA(matrizA)) {
+			$("#cuadro_tabla_X").hide();
 			$("#tabla_X").hide();
+			$("#cuadro_tabla_B").hide();
 			$("#tabla_B").hide();
 			$("#cuadro_vector_inicial").hide();
 			return;
@@ -149,15 +151,24 @@ function mostrarEstado1() {
 	$('.ejecutar-algoritmo').hide();
 	//    $('.ejecutar-norma').hide();
 	$('#generar').hide();
+	$("#tabla_A").hide();
+	$("#cuadro_tabla_A").hide();
+	$("#tabla_B").hide();
+	$("#cuadro_tabla_B").hide();
+	$("#tabla_X").hide();
+	$("#cuadro_tabla_X").hide();
 
 	$('#filas_columnas').focus();
 	$('.subtitulo').text('Ingrese la cardinalidad de la matriz');
 }
 
 function mostrarEstado2() {
-	$("#tabla_A").hide();
+	$("#cuadro_tabla_A").show();
+	$("#tabla_A").show();
 	$('.generar-matriz-form').hide();
+	$("#cuadro_tabla_X").hide();
 	$("#tabla_X").hide();
+	$("#cuadro_tabla_B").hide();
 	$("#tabla_B").hide();
 	$("#cuadro_vector_inicial").hide();
 
@@ -171,7 +182,9 @@ function mostrarEstado2() {
 function mostrarEstado3() {
 	$("#verificar").hide();
 	$('.ejecutar-norma').show();
+	$("#cuadro_tabla_X").show();
 	$("#tabla_X").show();
+	$("#cuadro_tabla_B").show();
 	$("#tabla_B").show();
 	$("#cuadro_vector_inicial").show();
 
