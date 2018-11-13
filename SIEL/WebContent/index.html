@@ -88,35 +88,42 @@
     <div class="vector-inicial" id="vector_inicial"></div>
   </div>
 
+
   <div class="seleccion-metodo">
-    <div>Seleccione un m&eacute;todo a utilizar</div>
-    <select name="Metodo" id="comboMetodo">
-      <option>Jacobi</option>
-      <option>Gauss-Seidel</option>
-    </select>
+    <div class="columna-seleccion-metodo">
+      <div>Seleccione un m&eacute;todo a utilizar</div>
+      <select name="Metodo" id="comboMetodo">
+        <option>Jacobi</option>
+        <option>Gauss-Seidel</option>
+      </select>
+    </div>
     <!--- Valor inicial depende del tamaño de la matriz que elijo -->
-    <div>
-      <span>Cota de Error: 10^-</span><input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center">
+    <div class="columna-seleccion-metodo">
+      <div>
+        <span>Cota de Error: </span>
+        <div>10^-<input id="cotaError" type="tel" size="3" maxlength="1" name="Error" align="center"></div>
+      </div>
+    </div>
+    <div class="columna-seleccion-metodo">
+      <div>
+        <span>Cantidad de Decimales:</span>
+        <div><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales" align="right"></div>
+      </div>
+    </div>
+  </div>
+  <div class="boton-aislado">
+    <div class="boton-verificar">
+      <button id="verificar">Verificar Matriz</button>
     </div>
     <div>
-      <span>Cantidad de Decimales:</span><input id="cantidadDecimales" type="tel" size="3" maxlength="1" name="Decimales"
-        align="right"><br />
+      <button id="ejecutarNormas">Calcular Normas</button>
     </div>
+  </div>
+  <div class="boton-aislado">
+    <div id="tabla_normas"></div>
   </div>
   <div class="boton-aislado ejecutar-algoritmo">
-    <br><button id="ejecutar">Ejecutar</button>
-  </div>
-
-  <div class="boton-aislado">
-      <div class="boton-verificar">
-        <button id="verificar">Verificar Matriz</button>
-      </div>
-      <div>
-        <button id="ejecutarNormas">Calcular Normas</button>
-      </div>
-    </div>
-    <div class="boton-aislado">
-        <div id="tabla_normas"></div>
+      <br><button id="ejecutar">Ejecutar</button>
     </div>
 </body>
 

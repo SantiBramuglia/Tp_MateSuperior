@@ -62,3 +62,12 @@ Primary style
   clear: both;
   padding-top: 15px;
 }
+
+.seleccion-metodo{
+  margin-top: 20px;
+}
+
+.columna-seleccion-metodo{
+  float: left;
+  margin-right: 15px;
+}
