@@ -7,6 +7,7 @@ $(document).ready(function () {
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
+		idEncabezadoVectorInicial = "header_vector_inicial"
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
 	mostrarEstado1();
@@ -76,6 +77,7 @@ $(document).ready(function () {
 
 			dataVectorInicial = generarData(1, matrizA.countRows());
 			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true);
+			crearMatriz(idEncabezadoVectorInicial, math.transpose(dataX), true, false);
 		}
 
 		mostrarEstado3();

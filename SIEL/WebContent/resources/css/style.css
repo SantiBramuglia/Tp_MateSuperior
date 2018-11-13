@@ -49,6 +49,10 @@ Primary style
   margin-right: 10px;
 }
 
+.vector-inicial{
+  margin-top: 0px;
+}
+
 .boton-aislado{
   clear: both;
   padding-top: 15px;
