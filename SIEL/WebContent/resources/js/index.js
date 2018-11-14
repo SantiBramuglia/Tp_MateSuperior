@@ -2,14 +2,14 @@ $(document).ready(function () {
 
 	var filas,
 		matrizA, matrizB, vectorInicial,
-		dataA, dataB, dataVectorInicial
+		dataA, dataB, dataX, dataVectorInicial,
 		idTablaA = "tabla_A",
 		idTablaX = "tabla_X",
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
 		tablaNormas = "tabla_normas",
 		tablaResultados = "tabla_resultados",
-		idEncabezadoVectorInicial = "header_vector_inicial"
+		idEncabezadoVectorInicial = "header_vector_inicial",
 		idCuadroVectorInicial = "cuadro_vector_inicial";
 
 	mostrarEstado1();
@@ -67,7 +67,7 @@ $(document).ready(function () {
 
 		if ((typeof matrizB == "undefined") || !(isVisible)) {
 
-			var dataX = generarData(matrizA.countRows(), 1);
+			dataX = generarData(matrizA.countRows(), 1);
 
 			for (var i = 0; i < matrizA.countRows(); i++) {
 				dataX[i][0] = "X" + [i + 1];
@@ -112,7 +112,8 @@ $(document).ready(function () {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
 			console.error("ERROR");
 		}
-		crearMatriz(tablaResultados, resultados, true, false);
+		var matrizParseada = parsearMatrizDeResultados(resultados, dataX);
+		crearMatriz(tablaResultados, matrizParseada, true, false);
 	})
 
 	$("#ejecutar-tests").click(function () {
