@@ -112,7 +112,7 @@ $(document).ready(function () {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
 			console.error("ERROR");
 		}
-		var matrizParseada = parsearMatrizDeResultados(resultados, dataX);
+		var matrizParseada = parsearMatrizDeResultados(resultados, dataX, decimales);
 		crearMatriz(tablaResultados, matrizParseada, true, false);
 	})
 
