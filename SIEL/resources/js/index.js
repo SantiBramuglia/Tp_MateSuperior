@@ -45,7 +45,13 @@ $(document).ready(function () {
 		}
 
 		dataA = generarData(filas, filas);
-		matrizA = crearMatriz(idTablaA, dataA, false, true, false);
+		dataX = generarData(filas, 1);
+
+		for (var i = 0; i < filas; i++) {
+			dataX[i][0] = "X" + [i + 1];
+		}
+
+		matrizA = crearMatriz(idTablaA, dataA, false, true, math.transpose(dataX)[0]);
 
 		mostrarEstado2();
 	});
@@ -67,15 +73,10 @@ $(document).ready(function () {
 
 		if ((typeof matrizB == "undefined") || !(isVisible)) {
 
-			dataX = generarData(matrizA.countRows(), 1);
-
-			for (var i = 0; i < matrizA.countRows(); i++) {
-				dataX[i][0] = "X" + [i + 1];
-			}
-			crearMatriz(idTablaX, dataX, true, false, false);
+			crearMatriz(idTablaX, dataX, true, false, ['Xn']);
 
 			dataB = generarData(matrizA.countRows(), 1);
-			matrizB = crearMatriz(idTablaB, dataB, false, true, false);
+			matrizB = crearMatriz(idTablaB, dataB, false, true, ['TI']);
 
 			dataVectorInicial = generarData(1, matrizA.countRows());
 			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true, math.transpose(dataX)[0]);
@@ -95,7 +96,7 @@ $(document).ready(function () {
 		dataNormas[1][1] = calcularNorma(norma2, matrizA.getData());
 		dataNormas[2][0] = normaInfinito;
 		dataNormas[2][1] = calcularNorma(normaInfinito, matrizA.getData());
-		HTNormas = crearMatriz(tablaNormas, dataNormas, true, false ['Norma', 'Resultado']);
+		HTNormas = crearMatriz(tablaNormas, dataNormas, true, false['Norma', 'Resultado']);
 	})
 
 	$("#ejecutar").click(function () {
@@ -105,7 +106,7 @@ $(document).ready(function () {
 		var resultados = [];
 		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
 			var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
-			resultados = resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, math.pow(10,- cota));
+			resultados = resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, math.pow(10, - cota));
 		}
 		else {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
