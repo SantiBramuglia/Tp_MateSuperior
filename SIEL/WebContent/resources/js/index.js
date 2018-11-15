@@ -45,7 +45,7 @@ $(document).ready(function () {
 		}
 
 		dataA = generarData(filas, filas);
-		matrizA = crearMatriz(idTablaA, dataA, false, true);
+		matrizA = crearMatriz(idTablaA, dataA, false, true, false);
 
 		mostrarEstado2();
 	});
@@ -72,14 +72,13 @@ $(document).ready(function () {
 			for (var i = 0; i < matrizA.countRows(); i++) {
 				dataX[i][0] = "X" + [i + 1];
 			}
-			crearMatriz(idTablaX, dataX, true, false);
+			crearMatriz(idTablaX, dataX, true, false, false);
 
 			dataB = generarData(matrizA.countRows(), 1);
-			matrizB = crearMatriz(idTablaB, dataB, false, true);
+			matrizB = crearMatriz(idTablaB, dataB, false, true, false);
 
 			dataVectorInicial = generarData(1, matrizA.countRows());
-			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true);
-			crearMatriz(idEncabezadoVectorInicial, math.transpose(dataX), true, false);
+			vectorInicial = crearMatriz(idVectorInicial, dataVectorInicial, false, true, math.transpose(dataX)[0]);
 		}
 
 		mostrarEstado3();
@@ -96,7 +95,7 @@ $(document).ready(function () {
 		dataNormas[1][1] = calcularNorma(norma2, matrizA.getData());
 		dataNormas[2][0] = normaInfinito;
 		dataNormas[2][1] = calcularNorma(normaInfinito, matrizA.getData());
-		HTNormas = crearMatriz(tablaNormas, dataNormas, true, false);
+		HTNormas = crearMatriz(tablaNormas, dataNormas, true, false ['Norma', 'Resultado']);
 	})
 
 	$("#ejecutar").click(function () {
@@ -113,7 +112,9 @@ $(document).ready(function () {
 			console.error("ERROR");
 		}
 		var matrizParseada = parsearMatrizDeResultados(resultados, dataX, decimales);
-		crearMatriz(tablaResultados, matrizParseada, true, false);
+		var arrayConstantes = math.transpose(dataX)[0];
+		var filaTitulos = math.concat(['Iteracion'], arrayConstantes, ['Norma Infinito', 'Error']);
+		crearMatriz(tablaResultados, matrizParseada, true, false, filaTitulos);
 	})
 
 	$("#ejecutar-tests").click(function () {
