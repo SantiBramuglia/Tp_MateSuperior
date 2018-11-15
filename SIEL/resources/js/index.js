@@ -111,7 +111,7 @@ $(document).ready(function () {
 		var resultados = [];
 		if (sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decimales)) {
 			var matrizDespejada = obtenerMatrizDespejada(matrizA.getData(), matrizB.getData());
-			resultados = resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, math.pow(10, - cota));
+			resultados = resolverSistemaDeEcuaciones(metodoSeleccionado, dataVectorInicial[0], matrizDespejada, cota);
 		}
 		else {
 			$('.subtitulo').text('Por favor, verifique que los datos ingresados sean válidos');
@@ -119,7 +119,7 @@ $(document).ready(function () {
 		}
 		var matrizParseada = parsearMatrizDeResultados(resultados, dataX, decimales);
 		var arrayConstantes = math.transpose(dataX)[0];
-		var filaTitulos = math.concat(['Iteracion'], arrayConstantes, ['Norma Infinito', '', 'Error']);
+		var filaTitulos = math.concat(['Iteracion'], arrayConstantes, ['Norma Infinito', 'Error']);
 		crearMatriz(tablaResultados, matrizParseada, true, false, filaTitulos);
 	})
 

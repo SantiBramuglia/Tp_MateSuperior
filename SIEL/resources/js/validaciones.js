@@ -8,20 +8,24 @@ function sonValidosDatosIngresados(matrizA, matrizB, vectorInicial, cota, decima
     if(!esValidoVectorInicial(vectorInicial)){
         return false;
     }
-    if(!esEntero(cota)){
-        alert("Por favor, ingrese un valor entero positivo en la cota de errores");
-        return false;
-    }
     if (esNulo(cota)) {
         alert("Por favor, especifique la cota de errores");
         return false;
     }
-    if(!esEntero(decimales)){
-        alert("Por favor, ingrese un valor entero positivo en la cantidad de decimales");
+    if(!esNumero(cota)){
+        alert("Por favor, ingrese un valor numérico en la cota de errores");
+        return false;
+    }
+    if(cota < 0){
+        alert("Por favor, ingrese un valor positivo en la cota de errores");
         return false;
     }
     if (esNulo(decimales)) {
         alert("Por favor, especifique los decimales");
+        return false;
+    }
+    if(!esEntero(decimales)){
+        alert("Por favor, ingrese un valor entero positivo en la cantidad de decimales");
         return false;
     }
     return true;
