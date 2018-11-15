@@ -113,7 +113,7 @@ $(document).ready(function () {
 		}
 		var matrizParseada = parsearMatrizDeResultados(resultados, dataX, decimales);
 		var arrayConstantes = math.transpose(dataX)[0];
-		var filaTitulos = math.concat(['Iteracion'], arrayConstantes, ['Norma Infinito', 'Error']);
+		var filaTitulos = math.concat(['Iteracion'], arrayConstantes, ['Norma Infinito', '', 'Error']);
 		crearMatriz(tablaResultados, matrizParseada, true, false, filaTitulos);
 	})
 
