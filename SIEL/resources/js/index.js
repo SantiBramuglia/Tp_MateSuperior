@@ -8,13 +8,14 @@ $(document).ready(function () {
 		idTablaB = "tabla_B",
 		idVectorInicial = "vector_inicial",
 		tablaNormas = "tabla_normas",
-		tablaResultados = "tabla_resultados",
-		idEncabezadoVectorInicial = "header_vector_inicial",
-		idCuadroVectorInicial = "cuadro_vector_inicial";
+		tablaResultados = "tabla_resultados";
 
 	mostrarEstado1();
 
 	$('#restart').click(function () {
+		$("#filas_columnas").val('');
+		$("#cotaError").val('');
+		$("#cantidadDecimales").val('');
 		window.location.reload();
 	});
 
