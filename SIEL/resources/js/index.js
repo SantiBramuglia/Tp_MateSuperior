@@ -39,6 +39,10 @@ $(document).ready(function () {
 	$("#generar").click(function () {
 		filas = $("#filas_columnas").val();
 
+		if (filas < 2 || !esEntero(filas)) {
+			alert("Por favor, ingrese un valor entero mayor a uno");
+			return;
+		}
 		if (filas == '') {
 			alert("Por favor, ingrese las filas y columnas");
 			return;
