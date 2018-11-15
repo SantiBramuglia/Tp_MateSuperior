@@ -57,7 +57,14 @@ function mostrarEstado3() {
     $("#tabla_B").show();
     $("#cuadro_vector_inicial").show();
 
+    var alturaTablaA = document.getElementById('tabla_A').clientHeight;
+    console.error(document.getElementById('tabla_A').clientHeight);
+    var alturaStyle = "height:"+alturaTablaA+"px";
+    var paddingStyle = "padding-top:"+alturaTablaA/3+"px";
+    document.getElementById('middot').setAttribute("style", alturaStyle);
+    document.getElementById('middot').setAttribute("style", paddingStyle);
+    document.getElementById('equals').setAttribute("style", alturaStyle);
+    document.getElementById('equals').setAttribute("style", paddingStyle);
     $('.seleccion-metodo, .ejecutar-algoritmo').fadeIn();
-    //Esta validacion esta repetida, debería quitarla de uno de los dos lados?
     $('.subtitulo').text('Complete el vector inicial, el vector de resultados y seleccione el metodo a utilizar');
 }
